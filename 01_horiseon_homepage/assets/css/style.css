@@ -1,0 +1,155 @@
+/*/ GLOBAL STYLES /*/
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #d9dcd6;
+    color: #ffffff;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+a:visited,
+a:hover,
+a:active,
+a:focus {
+    color: #000;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active,
+a:focus {
+    border: 1px solid #000;
+}
+
+p {
+    font-size: 16px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 36px;
+}
+
+/*/ UTILITIES /*/
+.float-left {
+    float: left;
+    margin-right: 25px;
+}
+
+.float-right {
+    float: right;
+    margin-left: 25px;
+}
+
+/*/ HEADER STYLES /*/
+.header,
+.footer {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.header {
+    padding: 20px;
+    background-color: #2a607c;
+}
+
+.main-heading {
+    display: inline-block;
+    font-size: 48px;
+}
+
+.seo {
+    color: #d9dcd6;
+}
+
+.main-nav {
+    padding-top: 15px;
+    margin-right: 20px;
+    float: right;
+    font-size: 20px;
+}
+
+.main-nav__links {
+    list-style-type: none;
+}
+
+.main-nav__item {
+    display: inline-block;
+    margin-left: 25px;
+}
+
+/*/ HERO STYLES /*/
+.hero {
+    height: 800px;
+    width: 100%;
+    margin-bottom: 25px;
+    background-image: url("../images/digital-marketing-meeting.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+/*/ CONTENT SECTION STYLES /*/
+.content {
+    width: 75%;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.content__item {
+    margin-bottom: 20px;
+    padding: 50px;
+    height: 300px;
+    background-color: #0072bb;
+}
+
+.content__img {
+    max-height: 200px;
+}
+
+/*/ BENEFITS SECTION STYLES /*/
+.benefits {
+    margin-right: 20px;
+    padding: 20px;
+    clear: both;
+    float: right;
+    width: 20%;
+    height: 100%;
+    background-color: #2589bd;
+}
+
+.benefits__item {
+    margin-bottom: 32px;
+}
+
+.benefits__heading {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.benefits__img {
+    display: block;
+    margin: 10px auto;
+    max-width: 150px;
+}
+
+/*/ FOOTER STYLES /*/
+.footer {
+    padding: 30px;
+    clear: both;
+    text-align: center;
+}
+
+.footer__heading {
+    font-size: 20px;
+}
