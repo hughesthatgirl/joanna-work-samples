@@ -41,7 +41,11 @@
 						<input id="answer3" class="choices__input" type="radio" name="answers" value="">
 						<label for="answer3" class="choices__label"><!-- Insert from Question/Answer Object !--></label>
 					</div>
+					<div id="feedback" class="feedback">
+						<p id="feedbackText" class="feedback__text"></p>
+					</div>
 				</div>
+				<button id="next" class="next__btn" type="button">Next Question</button>
 			</section>
 
 			<section id="end-screen" class="hide section" aria-hidden="false">
@@ -51,8 +55,6 @@
 				<input id="initials" class="initials__input" type="text" max="3" />
 				<button id="submit" class="submit__btn" type="button">Submit Your Score</button>
 			</section>
-
-			<!-- <section id="feedback" class="feedback hide section"></section> -->
 		</main>
 		<script src="./js/questions.js"></script>
 		<script src="./js/logic.js"></script>
