@@ -9,15 +9,15 @@
 	</head>
 	<body>
 		<header class="header">
-			<h1>Coding Quiz Challenge</h1>
+			<h1 class="header__h1">Coding Quiz Challenge</h1>
 			<div class="time-scores">
-				<p class="scores"><a href="highscores.html">View Highscores</a></p>
+				<p class="scores"><a class="scores__link" href="highscores.html">View Highscores</a></p>
 				<p class="timer">Time Remaining: <span id="time">0</span></p>
 			</div>
 		</header>
 		<main class="wrapper">
 			<section id="start-screen" class="start section" aria-hidden="false">
-				<h2>Ready to test your coding knowledge?</h2>
+				<h2 class="section__heading">Ready to test your coding knowledge?</h2>
 				<p>
 					Try to answer the following code-related questions within the time
 					limit. Keep in mind that incorrect answers will penalize your
@@ -26,29 +26,33 @@
 				<button id="start" type="button">Start Quiz</button>
 			</section>
 
-			<section id="questions" class="hide section" aria-hidden="false">
-				<h2 id="question-title"><!-- Insert from Question/Answer Object !--></h2>
+			<section id="questions" class="hide questions section" aria-hidden="false">
+				<h2 id="question-title" class="section__heading">Question: <span id="question-number"></span></h2>
 				<div id="choices" class="choices">
-					<label for="answer1" class="choices__label"><!-- Insert from Question/Answer Object !--></label>
-					<input id="answer1" type="radio" name="answers" value="">
-					<label for="answer2" class="choices__label"><!-- Insert from Question/Answer Object !--></label>
-					<input id="answer2" type="radio" name="answers" value="">
-					<label for="answer3" class="choices__label"><!-- Insert from Question/Answer Object !--></label>
-					<input id="answer3" type="radio" name="answers" value="">
+					<div class="choices__container">
+						<input id="answer1" class="choices__input" type="radio" name="answers" value="">
+						<label for="answer1" class="choices__label"><!-- Insert from Question/Answer Object !--></label>
+					</div>
+					<div class="choices__container">
+						<input id="answer2" class="choices__input" type="radio" name="answers" value="">
+						<label for="answer2" class="choices__label"><!-- Insert from Question/Answer Object !--></label>
+					</div>
+					<div class="choices__container">
+						<input id="answer3" class="choices__input" type="radio" name="answers" value="">
+						<label for="answer3" class="choices__label"><!-- Insert from Question/Answer Object !--></label>
+					</div>
 				</div>
 			</section>
 
 			<section id="end-screen" class="hide section" aria-hidden="false">
-				<h2>All done!</h2>
-				<p>Your final score is <span id="final-score"></span>.</p>
-				<div>
-					<label for="initials">Enter your initials to submit your score to the leader board.</label>
-					<input id="initials" type="text" max="3" />
-					<button id="submit" type="button">Submit Your Score</button>
-				</div>
+				<h2 class="section__heading">All done!</h2>
+				<p><strong>Your final score is <span id="final-score"></span>.</strong></p>
+				<label for="initials" class="initials__label">Enter your initials to submit your score to the leader board.</label>
+				<input id="initials" class="initials__input" type="text" max="3" />
+				<button id="submit" class="submit__btn" type="button">Submit Your Score</button>
 			</section>
 
-			<section id="feedback" class="feedback hide section"></section>
+			<!-- <section id="feedback" class="feedback hide section"></section> -->
 		</main>
 		<script src="./js/questions.js"></script>
 		<script src="./js/logic.js"></script>
