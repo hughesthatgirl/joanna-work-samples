@@ -130,6 +130,26 @@ li:nth-child(odd) {
   margin-top: 20px;
 }
 
+.slide {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.slide.active {
+  clip: auto;
+  clip-path: none;
+  height: auto;
+  overflow: visible;
+  position: static;
+  white-space: normal;
+  width: 100%;
+}
+
 /*///// RESULTS SECTION /////*/
 .initials__label {
   display: block;
