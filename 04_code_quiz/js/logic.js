@@ -1,42 +1,72 @@
-var questionsArr = [
+var questions = [
     {
         'question': 'Question 1 text',
-        'answer1': 'Answer Option 1',
-        'answer2': 'Answer Option 2',
-        'answer3': 'Answer Option 3'
+        'a': 'Answer Option 1',
+        'b': 'Answer Option 2',
+        'c': 'Answer Option 3'
     },
     {
         'question': 'Question 2 text',
-        'answer1': 'Answer Option 1',
-        'answer2': 'Answer Option 2',
-        'answer3': 'Answer Option 3'
+        'a': 'Answer Option 1',
+        'b': 'Answer Option 2',
+        'c': 'Answer Option 3'
     },
     {
        'question': 'Question 3 text',
-        'answer1': 'Answer Option 1',
-        'answer2': 'Answer Option 2',
-        'answer3': 'Answer Option 3'
+        'a': 'Answer Option 1',
+        'b': 'Answer Option 2',
+        'c': 'Answer Option 3'
     },
     {
        'question': 'Question 4 text',
-        'answer1': 'Answer Option 1',
-        'answer2': 'Answer Option 2',
-        'answer3': 'Answer Option 3'
+        'a': 'Answer Option 1',
+        'b': 'Answer Option 2',
+        'c': 'Answer Option 3'
     },
     {
         'question': 'Question 5 text',
-        'answer1': 'Answer Option 1',
-        'answer2': 'Answer Option 2',
-        'answer3': 'Answer Option 3'
+        'a': 'Answer Option 1',
+        'b': 'Answer Option 2',
+        'c': 'Answer Option 3'
     }
 ];
 
+// var answers = [
+//     {
+//         'a': 'Answer Option 1',
+//         'b': 'Answer Option 2',
+//         'c': 'Answer Option 3'
+//     },
+//     {
+//         'a': 'Answer Option 1',
+//         'b': 'Answer Option 2',
+//         'c': 'Answer Option 3'
+//     },
+//     {
+//         'a': 'Answer Option 1',
+//         'b': 'Answer Option 2',
+//         'c': 'Answer Option 3'
+//     },
+//     {
+//         'a': 'Answer Option 1',
+//         'b': 'Answer Option 2',
+//         'c': 'Answer Option 3'
+//     },
+//     {
+//         'a': 'Answer Option 1',
+//         'b': 'Answer Option 2',
+//         'c': 'Answer Option 3'
+//     }
+// ];
+
 var timer = document.querySelector('#time');
 
-function buildQuestions(){
-	var questionsContainer = document.querySelector('#questionsContainer');
+//Functions to build questions and inputs
+var questionsContainer = document.querySelector('#questionsContainer');
 
-	for (var i = 0; i < questionsArr.length; i++){
+function buildQuestions(){
+	for (var i = 0; i < questions.length; i++){
+
 		var slide = document.createElement('div');
 		slide.id = 'slide' + (i + 1);
 		slide.setAttribute('class', 'slide')
@@ -46,17 +76,59 @@ function buildQuestions(){
 		
 		var title = document.createElement('h2');
 		title.setAttribute('class', 'section__heading');
-		title.textContent = (i + 1) + ': ' + questionsArr[i].question;
-		
-		
+		title.textContent = (i + 1) + ': ' + questions[i].question;
+
+		var choicesContainer = document.createElement('div');
+		choicesContainer.classList.add('choices__container');
+
+		var inputA = document.createElement('input');
+		inputA.id = 'inputA' + (i + 1);
+		inputA.type = 'radio';
+		inputA.name = 'choices' + i;
+		inputA.value = questions[i].a;
+		inputA.classList.add('choices__input');
+		var inputB = document.createElement('input');
+		inputB.id = 'inputB' + (i + 1);
+		inputB.type = 'radio';
+		inputB.name = 'choices' + i;
+		inputB.value = questions[i].b;
+		inputB.classList.add('choices__input');
+		var inputC = document.createElement('input');
+		inputC.id = 'inputC' + (i + 1);
+		inputC.type = 'radio';
+		inputC.name = 'choices' + i;
+		inputC.value = questions[i].c;
+		inputC.classList.add('choices__input');
+
+		var labelA = document.createElement('label');
+		labelA.textContent = questions[i].a;
+		labelA.setAttribute('for', inputA.id);
+		labelA.classList.add('choices__label');
+		var labelB = document.createElement('label');
+		labelB.textContent = questions[i].b;
+		labelB.setAttribute('for', inputB.id);
+		labelB.classList.add('choices__label');
+		var labelC = document.createElement('label');
+		labelC.textContent = questions[i].c;
+		labelC.setAttribute('for', inputC.id);
+		labelC.classList.add('choices__label');
+
+		choicesContainer.appendChild(inputA);
+		choicesContainer.appendChild(labelA);
+		choicesContainer.appendChild(inputB);
+		choicesContainer.appendChild(labelB);
+		choicesContainer.appendChild(inputC);
+		choicesContainer.appendChild(labelC);
+
 		slide.appendChild(title);
+		slide.appendChild(choicesContainer);
 		questionsContainer.appendChild(slide);
 	}
 }
 
 buildQuestions();
 
-// //Function to show question slides
+//Functions to show and progress through slides
 function showSlide(num) {	
 	var nextBtn = document.querySelector('#next');
 	var resultBtn = document.querySelector('#showResult');
@@ -75,7 +147,6 @@ function showSlide(num) {
     }
 }
 
-//Function to progress question slides
 function showNextSlide() {
 	showSlide(currentSlide + 1);
 }
@@ -85,6 +156,7 @@ var currentSlide = 0;
 
 showSlide(currentSlide);
 
+//Click event listeners for all buttons
 document.addEventListener('click', function(e){
 	var startScreen = document.querySelector('#start-screen');
 	var questionScreen = document.querySelector('#questions');
