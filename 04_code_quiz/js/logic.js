@@ -51,6 +51,7 @@ function buildQuestions(){
 		title.textContent = (i + 1) + ': ' + questions[i].question;
 
 		var choicesContainer = document.createElement('div');
+		choicesContainer.id = 'container' + (i + 1);
 		choicesContainer.classList.add('choices__container');
 
 		var inputA = document.createElement('input');
@@ -128,6 +129,32 @@ var currentSlide = 0;
 
 showSlide(currentSlide);
 
+// Function to get all the checked values
+// if they are the correct answer increment the correct counter
+function getCorrect(){
+	var checked = document.querySelectorAll('input:checked');
+	var checkedArray = Array.from(checked);
+	var correct = 0;
+
+	if(checkedArray[0].id === 'inputB1'){
+		correct += 1;
+	}
+	if(checkedArray[1].id === 'inputA2'){
+		correct += 1;
+	}
+	if(checkedArray[2].id === 'inputC3'){
+		correct += 1;
+	}
+	if(checkedArray[3].id === 'inputA4'){
+		correct += 1;
+	}
+	if(checkedArray[4].id === 'inputB5'){
+		correct += 1;
+	}
+
+	return correct;
+}
+
 //Click event listeners for all buttons
 document.addEventListener('click', function(e){
 	var startScreen = document.querySelector('#start-screen');
@@ -143,6 +170,9 @@ document.addEventListener('click', function(e){
 	if (e.target.id === 'showResult'){
         questionScreen.classList.add('hide');
 		resultScreen.classList.remove('hide');
+
+		var score = document.querySelector('#final-score');
+		score.textContent = getCorrect();
     }
 
     if (e.target.id === 'submitScore'){
