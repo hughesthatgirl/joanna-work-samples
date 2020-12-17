@@ -33,18 +33,15 @@ var questionsArr = [
 
 var timer = document.querySelector('#time');
 
-
-var currentScreen = 0;
-
 function buildQuestions(){
 	var questionsContainer = document.querySelector('#questionsContainer');
 
 	for (var i = 0; i < questionsArr.length; i++){
-		var screen = document.createElement('div');
-		screen.id = 'screen' + (i + 1);
-		screen.setAttribute('class', 'screen')
+		var slide = document.createElement('div');
+		slide.id = 'slide' + (i + 1);
+		slide.setAttribute('class', 'slide')
 		if (i === 0){
-			screen.classList.add('active');
+			slide.classList.add('active');
 		}
 		
 		var title = document.createElement('h2');
@@ -52,29 +49,32 @@ function buildQuestions(){
 		title.textContent = (i + 1) + ': ' + questionsArr[i].question;
 		
 		
-		screen.appendChild(title);
-		questionsContainer.appendChild(screen);
+		slide.appendChild(title);
+		questionsContainer.appendChild(slide);
 	}
 }
 
-// //Function to show question screens
-// function showScreen(num) {
-//     screens[currentScreen].classList.remove('active');
-//     screens[num].classList.add('active');
-//     currentScreen = num;
+// //Function to show question slides
+var currentslide = 0;
+var slides = document.querySelectorAll('.slide');
 
-//     if(currentScreen === screens.length - 1){
-//         nextBtn.style.opacity = '0';
-//     }
-//     else {
-//         nextBtn.style.opacity = '1';
-//     }
-// }
+function showslide(num) {
+    slides[currentslide].classList.remove('active');
+    slides[num].classList.add('active');
+    currentslide = num;
 
-// //Function to progress question screens
-// function showNextScreen() {
-// 	showScreen(currentScreen + 1);
-// }
+    if(currentslide === slides.length - 1){
+        nextBtn.style.opacity = '0';
+    }
+    else {
+        nextBtn.style.opacity = '1';
+    }
+}
+
+//Function to progress question slides
+function showNextslide() {
+	showslide(currentslide + 1);
+}
 
 document.addEventListener('click', function(e){
 	var startScreen = document.querySelector('#start-screen');
