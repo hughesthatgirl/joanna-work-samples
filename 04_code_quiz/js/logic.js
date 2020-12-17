@@ -59,8 +59,6 @@ function buildQuestions(){
 	}
 }
 
-buildQuestions();
-
 // //Function to show question screens
 // function showScreen(num) {
 //     screens[currentScreen].classList.remove('active');
@@ -80,18 +78,19 @@ buildQuestions();
 // 	showScreen(currentScreen + 1);
 // }
 
-// document.addEventListener('click', function(e){
-//     if (e.target.id === 'start'){
-//         startScreen.classList.add('hide');
-//         questionScreen.classList.remove('hide');
-//     }
+document.addEventListener('click', function(e){
+    if (e.target.id === 'start'){
+        startScreen.classList.add('hide');
+		questionScreen.classList.remove('hide');
+		buildQuestions();
+    }
 
-//     if (e.target.id === 'submit'){
-//         resultScreen.classList.add('hide');
-//         leaderBoard.classList.remove('hide');
-//     }
+    if (e.target.id === 'submit'){
+        resultScreen.classList.add('hide');
+        leaderBoard.classList.remove('hide');
+    }
 
-//     if (e.target.id === 'next'){
-//         showNextScreen();
-//     }
-// })
+    if (e.target.id === 'next'){
+        showNextScreen();
+    }
+})
