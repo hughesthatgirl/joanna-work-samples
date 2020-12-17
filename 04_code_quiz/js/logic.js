@@ -31,40 +31,12 @@ var questions = [
     }
 ];
 
-// var answers = [
-//     {
-//         'a': 'Answer Option 1',
-//         'b': 'Answer Option 2',
-//         'c': 'Answer Option 3'
-//     },
-//     {
-//         'a': 'Answer Option 1',
-//         'b': 'Answer Option 2',
-//         'c': 'Answer Option 3'
-//     },
-//     {
-//         'a': 'Answer Option 1',
-//         'b': 'Answer Option 2',
-//         'c': 'Answer Option 3'
-//     },
-//     {
-//         'a': 'Answer Option 1',
-//         'b': 'Answer Option 2',
-//         'c': 'Answer Option 3'
-//     },
-//     {
-//         'a': 'Answer Option 1',
-//         'b': 'Answer Option 2',
-//         'c': 'Answer Option 3'
-//     }
-// ];
-
 var timer = document.querySelector('#time');
 
-//Functions to build questions and inputs
-var questionsContainer = document.querySelector('#questionsContainer');
-
+//Function to build questions and inputs
 function buildQuestions(){
+	var questionsContainer = document.querySelector('#questionsContainer');
+
 	for (var i = 0; i < questions.length; i++){
 
 		var slide = document.createElement('div');
