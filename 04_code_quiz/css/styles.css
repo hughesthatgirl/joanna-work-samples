@@ -127,7 +127,12 @@ li:nth-child(odd) {
 }
 
 .choices__container {
-  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  grid-column-gap: 10px;
+  grid-template-rows: auto auto auto;
+  grid-row-gap: 10px;
+  margin-bottom: 30px;
 }
 
 .slide {
