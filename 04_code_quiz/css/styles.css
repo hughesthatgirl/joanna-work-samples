@@ -112,8 +112,12 @@ li:nth-child(odd) {
 }
 
 .scores__link {
+  color: #563d7c;
+  background-color: #fff;   
+}
+
+.scores__link:hover {
   color: #fff;
-  text-decoration: underline;
 }
 
 /*///// QUESTIONS SECTION /////*/

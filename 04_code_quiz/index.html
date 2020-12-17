@@ -11,8 +11,12 @@
 		<header class="header">
 			<h1 class="header__h1">Coding Quiz Challenge</h1>
 			<div class="time-scores">
-				<p class="scores"><a class="scores__link" href="highscores.html">View Highscores</a></p>
-				<p class="timer">Time Remaining: <span id="time">0</span></p>
+				<p class="scores">
+					<button id="viewScores" class="scores__link">View Highscores</button>
+				</p>
+				<p class="timer">Time Remaining: 
+					<span id="time">0</span>
+				</p>
 			</div>
 		</header>
 		<main class="wrapper">
@@ -49,6 +53,9 @@
 
 			<section id="leaderboard" class="hide section" aria-hidden="false">
 				<h2 class="section__heading">Leader Board</h2>
+				<ul id="scoresList" class="scores__list">
+					<!-- insert scores as list items-->
+				</ul>
 			</section>
 		</main>
 		<script src="./js/questions.js"></script>

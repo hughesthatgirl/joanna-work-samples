@@ -1,33 +1,33 @@
 var questions = [
     {
-        'question': 'Question 1 text',
-        'a': 'Answer Option 1',
-        'b': 'Answer Option 2',
-        'c': 'Answer Option 3'
+        'question': 'What year was JavaScript invented?',
+        'a': '1998',
+        'b': '1995',
+        'c': '1992'
     },
     {
-        'question': 'Question 2 text',
-        'a': 'Answer Option 1',
-        'b': 'Answer Option 2',
-        'c': 'Answer Option 3'
+        'question': 'Which punctuation mark represents the not operator in JavaScript?',
+        'a': '!',
+        'b': '*',
+        'c': '#'
     },
     {
-       'question': 'Question 3 text',
-        'a': 'Answer Option 1',
-        'b': 'Answer Option 2',
-        'c': 'Answer Option 3'
+       'question': 'Who is the creator of JavaScript?',
+        'a': 'Bill Gates',
+        'b': 'Tim Berners Lee',
+        'c': 'Brendan Eich'
     },
     {
-       'question': 'Question 4 text',
-        'a': 'Answer Option 1',
-        'b': 'Answer Option 2',
-        'c': 'Answer Option 3'
+       'question': 'Which of these is an array?',
+        'a': '[1, 2, 3]',
+        'b': '{key: value, key: value, key:value}',
+        'c': 'function(){};'
     },
     {
-        'question': 'Question 5 text',
-        'a': 'Answer Option 1',
-        'b': 'Answer Option 2',
-        'c': 'Answer Option 3'
+        'question': 'What method adds new elements to the end of an array?',
+        'a': 'shift',
+        'b': 'push',
+        'c': 'indexOf'
     }
 ];
 
