@@ -71,9 +71,9 @@ function showSlide(num) {
 }
 
 //Function to progress question slides
-// function showNextSlide() {
-// 	showSlide(currentSlide + 1);
-// }
+function showNextSlide() {
+	showSlide(currentSlide + 1);
+}
 
 var slides = document.querySelectorAll('.slide');
 var nextBtn = document.querySelector('#next');
@@ -97,7 +97,7 @@ document.addEventListener('click', function(e){
         leaderBoard.classList.remove('hide');
     }
 
-    // if (e.target.id === 'next'){
-    //     showNextSlide();
-    // }
+    if (e.target.id === 'next'){
+        showNextSlide();
+    }
 })
