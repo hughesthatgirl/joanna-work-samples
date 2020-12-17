@@ -32,15 +32,13 @@ var questionsArr = [
 ];
 
 var timer = document.querySelector('#time');
-var startScreen = document.querySelector('#start-screen');
-var questionScreen = document.querySelector('#questions');
-var questionsContainer = document.querySelector('#questionsContainer');
-var resultScreen = document.querySelector('#end-screen');
-var leaderBoard = document.querySelector('#leaderboard');
+
 
 var currentScreen = 0;
 
 function buildQuestions(){
+	var questionsContainer = document.querySelector('#questionsContainer');
+
 	for (var i = 0; i < questionsArr.length; i++){
 		var screen = document.createElement('div');
 		screen.id = 'screen' + (i + 1);
@@ -79,6 +77,11 @@ function buildQuestions(){
 // }
 
 document.addEventListener('click', function(e){
+	var startScreen = document.querySelector('#start-screen');
+	var questionScreen = document.querySelector('#questions');
+	var resultScreen = document.querySelector('#end-screen');
+	var leaderBoard = document.querySelector('#leaderboard');
+
     if (e.target.id === 'start'){
         startScreen.classList.add('hide');
 		questionScreen.classList.remove('hide');
