@@ -66,13 +66,12 @@ function showSlide(num) {
     currentSlide = num;
 
     if(currentSlide === slides.length - 1){
-		nextBtn.style.display = 'none';
-		nextBtn.disabled = true;
-		resultBtn.style.display = 'block';
+		nextBtn.classList.add('btn--disabled');
+		resultBtn.classList.remove('btn--disabled');
     }
     else {
-		nextBtn.style.display = 'block';
-		resultBtn.style.display = 'none';
+		nextBtn.classList.remove('btn--disabled');
+		resultBtn.classList.add('btn--disabled');
     }
 }
 

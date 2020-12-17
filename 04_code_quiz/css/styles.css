@@ -1,4 +1,4 @@
-/* GLOBAL STYLES */
+/*///// GLOBALS /////*/
 body {
   font-family: Arial;
   font-size: 120%;
@@ -52,7 +52,7 @@ li:nth-child(odd) {
   background-color: #f3edfc;
 }
 
-/* UTILITIES */
+/*///// UTILITIES /////*/
 /* .hide {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -63,6 +63,12 @@ li:nth-child(odd) {
   width: 1px;
 } */
 
+.btn--disabled {
+  opacity: 0; 
+  pointer-events: none;
+}
+
+/*///// BASE /////*/
 .header {
   text-align: center;
   padding: 30px 0 0; 
@@ -74,6 +80,23 @@ li:nth-child(odd) {
   margin-top: 0;
 }
 
+.wrapper {
+  margin: 60px auto 0 auto;
+  max-width: 650px;
+}
+
+.section {
+  padding: 60px 30px;
+  background-color: #efefef;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.section__heading {
+  margin-top: 0; 
+}
+
+/*///// TIMER /////*/
 .time-scores {
   background-color: #563d7c;
   display: flex;
@@ -93,30 +116,21 @@ li:nth-child(odd) {
   text-decoration: underline;
 }
 
-.wrapper {
-  margin: 60px auto 0 auto;
-  max-width: 650px;
-}
-
-.section {
-  padding: 60px 30px;
-  background-color: #efefef;
-  border-radius: 10px;
-  text-align: center;
-}
-
-.section__heading {
-  margin-top: 0; 
-}
-
+/*///// QUESTIONS SECTION /////*/
 .questions {
   text-align: left;
+}
+
+.questionsBtn__container {
+  display: flex;
+  justify-content: space-between;
 }
 
 .choices__container {
   margin-top: 20px;
 }
 
+/*///// RESULTS SECTION /////*/
 .initials__label {
   display: block;
   margin-bottom: 10px;
@@ -131,10 +145,6 @@ li:nth-child(odd) {
 .submit__btn {
   margin-top: 10px;
 }
-
-/* .choices button {
-  display: block;
-} */
 
 /* .feedback {
   font-style: italic;
