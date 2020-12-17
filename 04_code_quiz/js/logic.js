@@ -31,6 +31,11 @@ var questions = [
     }
 ];
 
+var startScreen = document.querySelector('#start-screen');
+var questionScreen = document.querySelector('#questions');
+var resultScreen = document.querySelector('#result-screen');
+var leaderBoard = document.querySelector('#leaderboard');
+
 //Countdown timer
 function startTimer(duration, display) {
 	var timer = duration, minutes, seconds;
@@ -55,6 +60,12 @@ function startTimer(duration, display) {
 
 		if (--timer < 0) {
 			timer = 0;
+
+			var score = document.querySelector('#final-score');
+			score.textContent = getCorrect();
+
+			questionScreen.classList.add('hide');
+			resultScreen.classList.remove('hide');
 		}
 	}, 1000);
 }
@@ -183,16 +194,11 @@ function getCorrect(){
 
 //Click event listeners for all buttons
 document.addEventListener('click', function(e){
-	var startScreen = document.querySelector('#start-screen');
-	var questionScreen = document.querySelector('#questions');
-	var resultScreen = document.querySelector('#result-screen');
-	var leaderBoard = document.querySelector('#leaderboard');
-
     if (e.target.id === 'start'){
         startScreen.classList.add('hide');
 		questionScreen.classList.remove('hide');
 
-		var totalMins = 60 * 2;
+		var totalMins = 60 * 0.25;
 		var countdown = document.querySelector('#time');
 
 		startTimer(totalMins, countdown);
