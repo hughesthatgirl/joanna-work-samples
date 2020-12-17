@@ -31,7 +31,33 @@ var questions = [
     }
 ];
 
-var timer = document.querySelector('#time');
+//Countdown timer
+function startTimer(duration, display) {
+	var timer = duration, minutes, seconds;
+
+	setInterval(function () {
+		minutes = parseInt(timer / 60, 10);
+		seconds = parseInt(timer % 60, 10);
+		
+		if (minutes < 10) {
+			minutes = "0" + minutes;
+		} else {
+			minutes = minutes;
+		}
+		
+		if (seconds < 10) {
+			seconds = "0" + seconds;
+		} else {
+			seconds = seconds;
+		}
+
+		display.textContent = minutes + ":" + seconds;
+
+		if (--timer < 0) {
+			timer = 0;
+		}
+	}, 1000);
+}
 
 //Function to build questions and inputs
 function buildQuestions(){
@@ -165,6 +191,11 @@ document.addEventListener('click', function(e){
     if (e.target.id === 'start'){
         startScreen.classList.add('hide');
 		questionScreen.classList.remove('hide');
+
+		var totalMins = 60 * 2;
+		var countdown = document.querySelector('#time');
+
+		startTimer(totalMins, countdown);
 	}
 	
 	if (e.target.id === 'showResult'){
