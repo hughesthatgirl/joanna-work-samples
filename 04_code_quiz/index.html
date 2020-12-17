@@ -26,30 +26,7 @@
 				<button id="start" type="button">Start Quiz</button>
 			</section>
 
-			<section id="questions" class="hide questions section" aria-hidden="false">
-				<h2 id="question-title" class="section__heading">
-					<span id="question-number"></span>
-					<span id="question-text"></span>
-				</h2>
-				<div id="choices" class="choices">
-					<div class="choices__container">
-						<input id="answer1" class="choices__input" type="radio" name="answers" value="">
-						<label for="answer1" class="choices__label"><!-- Insert from Question/Answer Object !--></label>
-					</div>
-					<div class="choices__container">
-						<input id="answer2" class="choices__input" type="radio" name="answers" value="">
-						<label for="answer2" class="choices__label"><!-- Insert from Question/Answer Object !--></label>
-					</div>
-					<div class="choices__container">
-						<input id="answer3" class="choices__input" type="radio" name="answers" value="">
-						<label for="answer3" class="choices__label"><!-- Insert from Question/Answer Object !--></label>
-					</div>
-					<div id="feedback" class="feedback">
-						<p id="feedbackText" class="feedback__text"></p>
-					</div>
-				</div>
-				<button id="next" class="next__btn" type="button">Next Question</button>
-			</section>
+			<section id="questions" class="hide questions section" aria-hidden="false"></section>
 
 			<section id="end-screen" class="hide section" aria-hidden="false">
 				<h2 class="section__heading">All done!</h2>
@@ -57,6 +34,10 @@
 				<label for="initials" class="initials__label">Enter your initials to submit your score to the leader board.</label>
 				<input id="initials" class="initials__input" type="text" max="3" />
 				<button id="submit" class="submit__btn" type="button">Submit Your Score</button>
+			</section>
+
+			<section id="leaderboard" class="hide section" aria-hidden="false">
+				<h2 class="section__heading">Leader Board</h2>
 			</section>
 		</main>
 		<script src="./js/questions.js"></script>

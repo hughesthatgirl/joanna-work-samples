@@ -91,20 +91,3 @@
 //         'answer3': 'Answer Option 3'
 //     }
 // ];
-
-// var questionsSlide = document.querySelector('.questions');
-// var questionsNum = document.getElementById('question-number');
-// var questionsText = document.getElementById('question-text');
-// var nextBtn = document.getElementById('next');
-// var numOf = 0;
-
-// // var question = questionsText.textContent = questions[0].question;
-
-// // var setText = function(){
-// //   questionsText.textContent = questions[0 + 1].question;
-// //   questionsNum.textContent = numOf + 1 + ': ';
-// // }
-
-// nextBtn.addEventListener('click', function(){
-//    questionsText.textContent = questions[numOf++].question;
-// })
