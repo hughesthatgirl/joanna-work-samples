@@ -60,12 +60,6 @@ function startTimer(duration, display) {
 
 		if (--timer < 0) {
 			timer = 0;
-
-			// var score = document.querySelector('#final-score');
-			// score.textContent = getCorrect();
-
-			// questionScreen.classList.add('hide');
-			// resultScreen.classList.remove('hide');
 		}
 	}, 1000);
 }
@@ -175,10 +169,10 @@ function getCorrect(){
 
 	if(checkedArray[0].id === 'inputB1'){
 		correct += 1;
-	}
+	} 
 	if(checkedArray[1].id === 'inputA2'){
 		correct += 1;
-	}
+	} 
 	if(checkedArray[2].id === 'inputC3'){
 		correct += 1;
 	}
@@ -207,8 +201,11 @@ function submitScore(){
 	var input = document.querySelector('#initials');
 	var val = getValue(input);
 
-	initials.textContent = val;
-	scoreNum.textContent = getCorrect();
+	initials.setAttribute('class', 'scores__initials scores__span')
+	scoreNum.setAttribute('class', 'scores__number scores__span')
+
+	initials.textContent = 'Name: ' + val.toUpperCase();
+	scoreNum.textContent = 'Final Score: ' + getCorrect();
 
 	item.appendChild(initials);
 	item.appendChild(scoreNum);

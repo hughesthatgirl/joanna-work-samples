@@ -37,19 +37,8 @@ input[type="text"] {
   font-size: 100%;
 }
 
-ol {
-  padding-left: 0px;
-  max-height: 400px;
-  overflow: auto;
-}
-
 li {
   padding: 5px;
-  list-style: decimal inside none;
-}
-
-li:nth-child(odd) {
-  background-color: #f3edfc;
 }
 
 /*///// UTILITIES /////*/
@@ -175,11 +164,19 @@ li:nth-child(odd) {
   margin-top: 10px;
 }
 
-/* .feedback {
-  font-style: italic;
-  font-size: 120%;
-  margin-top: 20px;
-  padding-top: 10px;
-  color: gray;
-  border-top: 2px solid #ccc;
-} */
+/*///// LEADER BOARD SECTION /////*/
+.scores__list {
+  text-align: left;
+}
+
+.scores__list li {
+  background-color: #fff;
+  color: #563d7c;
+  list-style: none;
+  margin-top: 10px;
+}
+
+.scores__span {
+  margin: 0 10px;
+}
+
