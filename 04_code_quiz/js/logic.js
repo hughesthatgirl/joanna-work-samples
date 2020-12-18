@@ -61,11 +61,11 @@ function startTimer(duration, display) {
 		if (--timer < 0) {
 			timer = 0;
 
-			var score = document.querySelector('#final-score');
-			score.textContent = getCorrect();
+			// var score = document.querySelector('#final-score');
+			// score.textContent = getCorrect();
 
-			questionScreen.classList.add('hide');
-			resultScreen.classList.remove('hide');
+			// questionScreen.classList.add('hide');
+			// resultScreen.classList.remove('hide');
 		}
 	}, 1000);
 }
@@ -190,6 +190,13 @@ function getCorrect(){
 	}
 
 	return correct;
+}
+
+//Add initial and scores to leader board ul
+function addScore(){
+	var item = document.createElement('li');
+	var initials = document.createElement('span');
+	
 }
 
 //Click event listeners for all buttons
