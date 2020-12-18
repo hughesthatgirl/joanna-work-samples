@@ -223,7 +223,12 @@ document.addEventListener('click', function(e){
 		input.value = "";
 
 		localStorage.setItem('initials', scoresList.innerHTML);
-    }
+	}
+	
+	if (e.target.id === 'viewScores'){
+
+		leaderBoard.classList.toggle('hide');
+	}
 
     if (e.target.id === 'next'){
         showNextSlide();
