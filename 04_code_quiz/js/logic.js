@@ -192,11 +192,28 @@ function getCorrect(){
 	return correct;
 }
 
+//Function to return a value
+function getValue(inputEl){
+	return inputEl.value;
+}
+
 //Add initial and scores to leader board ul
-function addScore(){
+function submitScore(){
+	var scoreList = document.querySelector('#scoresList');
 	var item = document.createElement('li');
 	var initials = document.createElement('span');
-	
+	var scoreNum = document.createElement('span');
+
+	var input = document.querySelector('#initials');
+	var val = getValue(input);
+
+	initials.textContent = val;
+	scoreNum.textContent = getCorrect();
+
+	item.appendChild(initials);
+	item.appendChild(scoreNum);
+
+	scoreList.appendChild(item);
 }
 
 //Click event listeners for all buttons
@@ -221,7 +238,9 @@ document.addEventListener('click', function(e){
 
     if (e.target.id === 'submitScore'){
         resultScreen.classList.add('hide');
-        leaderBoard.classList.remove('hide');
+		leaderBoard.classList.remove('hide');
+		
+		submitScore();
     }
 
     if (e.target.id === 'next'){
