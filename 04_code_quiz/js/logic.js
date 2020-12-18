@@ -187,31 +187,28 @@ function getCorrect(){
 }
 
 //Function to return a value
-function getValue(inputEl){
-	return inputEl.value;
-}
+// function getValue(inputEl){
+// 	return inputEl.value;
+// }
 
 //Add initial and scores to leader board ul
-function submitScore(){
-	var scoreList = document.querySelector('#scoresList');
-	var item = document.createElement('li');
-	var initials = document.createElement('span');
-	var scoreNum = document.createElement('span');
+// function submitScore(){
+	
 
-	var input = document.querySelector('#initials');
-	var val = getValue(input);
+// 	var score = document.querySelector('#final-score');
 
-	initials.setAttribute('class', 'scores__initials scores__span')
-	scoreNum.setAttribute('class', 'scores__number scores__span')
+// 	var input = document.querySelector('#initials');
+// 	var val = getValue(input);
 
-	initials.textContent = 'Name: ' + val.toUpperCase();
-	scoreNum.textContent = 'Final Score: ' + getCorrect();
+// 	input.value = '';
 
-	item.appendChild(initials);
-	item.appendChild(scoreNum);
+// 	localStorage.setItem('initials', val);
+// 	localStorage.setItem('score', score.textContent);
 
-	scoreList.appendChild(item);
-}
+	
+// }
+
+var scoresList = document.querySelector('#scoresList');
 
 //Click event listeners for all buttons
 document.addEventListener('click', function(e){
@@ -231,16 +228,35 @@ document.addEventListener('click', function(e){
 
 		var score = document.querySelector('#final-score');
 		score.textContent = getCorrect();
-    }
+	}
 
-    if (e.target.id === 'submitScore'){
+	if (e.target.id === 'submitScore'){
+
         resultScreen.classList.add('hide');
 		leaderBoard.classList.remove('hide');
-		
-		submitScore();
+
+		var input = document.querySelector('#initials');
+
+		if (input.value.length < 1) return;
+
+		scoresList.innerHTML += '<li>' +  input.value;
+		+ '</li>';
+
+		input.value = "";
+
+		localStorage.setItem('initials', scoresList.innerHTML);
     }
 
     if (e.target.id === 'next'){
         showNextSlide();
     }
 })
+
+// localStorage.removeItem('scores');
+
+
+var saved = localStorage.getItem('initials');
+
+if (saved) {
+	scoresList.innerHTML = saved;
+}
