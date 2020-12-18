@@ -186,28 +186,6 @@ function getCorrect(){
 	return correct;
 }
 
-//Function to return a value
-// function getValue(inputEl){
-// 	return inputEl.value;
-// }
-
-//Add initial and scores to leader board ul
-// function submitScore(){
-	
-
-// 	var score = document.querySelector('#final-score');
-
-// 	var input = document.querySelector('#initials');
-// 	var val = getValue(input);
-
-// 	input.value = '';
-
-// 	localStorage.setItem('initials', val);
-// 	localStorage.setItem('score', score.textContent);
-
-	
-// }
-
 var scoresList = document.querySelector('#scoresList');
 
 //Click event listeners for all buttons
@@ -251,9 +229,6 @@ document.addEventListener('click', function(e){
         showNextSlide();
     }
 })
-
-// localStorage.removeItem('scores');
-
 
 var saved = localStorage.getItem('initials');
 
