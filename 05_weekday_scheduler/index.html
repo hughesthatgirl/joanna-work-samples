@@ -26,10 +26,10 @@
 			<header class="jumbotron">
 				<h1 class="display-3">Work Day Scheduler</h1>
 				<p class="lead">A simple calendar app for scheduling your work day</p>
-				<p id="currentDay" class="lead"></p>
+				<p class="lead">Today's Date: <span id="currentDay"></span></p>
 			</header>
 			<main class="container">
-				<!-- Timeblocks go here -->
+				<ul id="days" class="days__list"></ul>
 			</main>
 			<script src="../node_modules/dayjs/dayjs.min.js">
 			</script>
