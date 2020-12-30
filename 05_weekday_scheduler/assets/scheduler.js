@@ -110,9 +110,14 @@ const storeItem = function(el){
 }
 
 //Function to remove item to local storage
-const removeItem = function(el){
+const removeItem = function(){
     localStorage.removeItem('todo');
 }
 
-const saveButtons = document.querySelectorAll('.saveBtn');
-console.log(saveButtons);
+//Set up click handlers for save buttons
+document.addEventListener('click', function(event){
+    if (event.target.id === 'btn9'){
+        const input9 = document.querySelector('#input9');
+        storeItem(input9);
+    }
+}, false);
