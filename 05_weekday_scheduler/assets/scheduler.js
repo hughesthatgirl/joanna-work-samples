@@ -75,20 +75,30 @@ const createHoursInputs = hoursArr.forEach(function(i){
 createHoursInputs;
 
 const hoursInputs = document.querySelectorAll('.hours__input');
-// console.log(hoursInputs);
 
 const setInputColor = hoursInputs.forEach(function(input){
-    const currentHour = dayjs().format('H');
-    const dataHr = input.getAttribute('data-hr');
+    const currentHour = parseInt(dayjs().format('H'));
+    const dataHr = parseInt(input.getAttribute('data-hr'));
+    const parentEl = input.parentElement.parentElement;
 
-    if(dataHr === currentHour){
-        console.log(input.id + " " + dataHr + " " + currentHour)
+    if (dataHr === currentHour){
+        parentEl.classList.add('current');
+    } else {
+        parentEl.classList.remove('current');
+    }
+
+    if (dataHr < currentHour){
+        parentEl.classList.add('past');
+    } else {
+        parentEl.classList.remove('past');
+    }
+
+    if(dataHr > currentHour){
+        parentEl.classList.add('future');
+    } else {
+        parentEl.classList.remove('future');
     }
 
 });
 
 setInputColor;
-
-// if(dayjs().format('H') === '12'){
-//     console.log('it is noon');
-// };
