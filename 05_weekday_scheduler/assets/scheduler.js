@@ -11,15 +11,17 @@
 const currentDay = document.querySelector('#currentDay');
 currentDay.textContent = dayjs().format("ddd MM-DD-YYYY");
 
-//Counts the seconds and shows the updated time
-const updateTime = setInterval(function(){
+//Counts the seconds and shows the updated time and changes the input color
+const updateTimeAndColor = setInterval(function(){
     const currentTime = document.querySelector('#currentTime');
 
     currentTime.textContent = "";
     currentTime.textContent = dayjs().format("h:mm a");
+
+    setInputColor;
 },1000)
 
-updateTime;
+updateTimeAndColor;
 
 //Store the time and the code dayJS uses for hours
 const hoursArr = [
@@ -74,8 +76,11 @@ const createHoursInputs = hoursArr.forEach(function(i){
 
 createHoursInputs;
 
+//Get all of the inputs
 const hoursInputs = document.querySelectorAll('.hours__input');
 
+//Compare the data-hr attribute on each input to the current hour
+//Conditionally set the background color
 const setInputColor = hoursInputs.forEach(function(input){
     const currentHour = parseInt(dayjs().format('H'));
     const dataHr = parseInt(input.getAttribute('data-hr'));
@@ -98,7 +103,4 @@ const setInputColor = hoursInputs.forEach(function(input){
     } else {
         parentEl.classList.remove('future');
     }
-
 });
-
-setInputColor;
