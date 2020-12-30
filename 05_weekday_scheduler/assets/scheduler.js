@@ -16,7 +16,7 @@ const updateTime = setInterval(function(){
     const currentTime = document.querySelector('#currentTime');
 
     currentTime.textContent = "";
-    currentTime.textContent = dayjs().format("h:mm:ss a");
+    currentTime.textContent = dayjs().format("h:mm a");
 },1000)
 
 updateTime;
@@ -72,3 +72,5 @@ const createHoursInputs = hoursArr.forEach(function(input){
 });
 
 createHoursInputs;
+
+console.log(dayjs().format('H'));
