@@ -106,12 +106,12 @@ const setInputColor = hoursInputs.forEach(function(input){
 const storeItem = function(el){
     if (el.value.length < 1) return;
 
-    localStorage.setItem('todo', el.value);
+    localStorage.setItem('todo' + el.id, el.value);
 }
 
 //Function to remove item to local storage
-const removeItem = function(){
-    localStorage.removeItem('todo');
+const removeItem = function(el){
+    localStorage.removeItem('todo' + el.id);
 }
 
 //Set up click handlers for save buttons
@@ -119,5 +119,54 @@ document.addEventListener('click', function(event){
     if (event.target.id === 'btn9'){
         const input9 = document.querySelector('#input9');
         storeItem(input9);
+        console.log(`clicked: ${input9.id}`);
     }
-}, false);
+
+    if (event.target.id === 'btn10'){
+        const input10 = document.querySelector('#input10');
+        storeItem(input10);
+        console.log(`clicked: ${input10.id}`);
+    }
+
+    if (event.target.id === 'btn11'){
+        const input11 = document.querySelector('#input11');
+        storeItem(input11);
+        console.log(`clicked: ${input11.id}`);
+    }
+
+    if (event.target.id === 'btn12'){
+        const input12 = document.querySelector('#input12');
+        storeItem(input12);
+        console.log(`clicked: ${input12.id}`);
+    }
+
+    if (event.target.id === 'btn13'){
+        const input13 = document.querySelector('#input13');
+        storeItem(input13);
+        console.log(`clicked: ${input13.id}`);
+    }
+
+    if (event.target.id === 'btn14'){
+        const input14 = document.querySelector('#input14');
+        storeItem(input14);
+        console.log(`clicked: ${input14.id}`);
+    }
+
+    if (event.target.id === 'btn15'){
+        const input15 = document.querySelector('#input15');
+        storeItem(input15);
+        console.log(`clicked: ${input15.id}`);
+    }
+
+    if (event.target.id === 'btn16'){
+        const input16 = document.querySelector('#input16');
+        storeItem(input16);
+        console.log(`clicked: ${input16.id}`);
+    }
+
+    if (event.target.id === 'btn17'){
+        const input17 = document.querySelector('#input17');
+        storeItem(input17);
+        console.log(`clicked: ${input17.id}`);
+    }
+});
