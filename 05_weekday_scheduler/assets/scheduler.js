@@ -4,8 +4,22 @@
 // Need to check every hour to reset the colors
 // On page load each day, the app should be cleared of data and local storage should be cleared too
 
-const currentDay = document.querySelector('#currentDay');
-currentDay.textContent = dayjs().format("ddd MM-DD-YYYY");
+//Helper Functions
+const getDayAsNumber = function(){
+    return parseInt(dayjs().format('d'));
+}
+
+const getHourAsNumber = function(){
+    return parseInt(dayjs().format('H'));
+}
+
+//Get the day/date and display it
+const showCurrentDay = function(){
+    const currentDay = document.querySelector('#currentDay');
+    currentDay.textContent = dayjs().format("ddd MM-DD-YYYY");
+}
+
+showCurrentDay();
 
 //Counts the seconds and shows the updated time and changes the input color
 const updateTimeAndColor = setInterval(function(){
@@ -81,7 +95,7 @@ const hoursInputs = document.querySelectorAll('.hours__input');
 const setInputColor = hoursInputs.forEach(function(input){
     const currentHour = parseInt(dayjs().format('H'));
     const dataHr = parseInt(input.getAttribute('data-hr'));
-    const parentEl = input.parentElement.parentElement;
+    const parentEl = input.parentElement;
 
     if (dataHr === currentHour){
         parentEl.classList.add('current');
@@ -108,22 +122,33 @@ const storeItem = function(el){
 
     const data = {
         todo: el.value,
-        timeSaved: dayjs().format("h:mm:ss A")
+        daySaved: parseInt(dayjs().format('d'))
     }
 
     localStorage.setItem('todo' + el.id, JSON.stringify(data));
 }
 
-//Function to remove item to local storage
-const removeItem = function(el){
-    localStorage.removeItem('todo' + el.id);
+//Function to expire storage if it's the next day
+const dataExpired = function(d){
+    if (!d || !d.todo || !d.daySaved) return false;
+
+    const dayCurrent = getDayAsNumber();
+
+    //should return true or false
+    return dayCurrent > d.daySaved;
 }
+
+let storedData;
 
 //Set up click handlers for save buttons
 document.addEventListener('click', function(event){
     if (event.target.id === 'btn9'){
         const input9 = document.querySelector('#input9');
         storeItem(input9);
+        storedData = JSON.parse(localStorage.getItem('todoinput9'));
+        if (dataExpired(storedData)){
+            localStorage.removeItem('todoinput9');
+        }
         console.log(`clicked: ${input9.id}`);
     }
 
