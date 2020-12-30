@@ -23,21 +23,21 @@ updateTime;
 
 //Store the time and the code dayJS uses for hours
 const hoursArr = [
-    {hour: '9AM', code: 9},
-    {hour: '10AM', code: 10},
-    {hour: '11AM', code: 11},
-    {hour: '12PM', code: 12},
-    {hour: '1PM', code: 13},
-    {hour: '2PM', code: 14},
-    {hour: '3PM', code: 15},
-    {hour: '4PM', code: 16},
-    {hour: '5PM', code: 17},
+    {hour: '9AM', code: '9'},
+    {hour: '10AM', code: '10'},
+    {hour: '11AM', code: '11'},
+    {hour: '12PM', code: '12'},
+    {hour: '1PM', code: '13'},
+    {hour: '2PM', code: '14'},
+    {hour: '3PM', code: '15'},
+    {hour: '4PM', code: '16'},
+    {hour: '5PM', code: '17'}
 ];
 
 //Create the elements to show the time, the inputs and save buttons
-const createHoursInputs = hoursArr.forEach(function(input){
+const createHoursInputs = hoursArr.forEach(function(i){
     const hoursWrap = document.querySelector('#hours');
-    const item = document.createElement('div');
+    const hoursItem = document.createElement('div');
     const time = document.createElement('div');
     const inputWrap = document.createElement('div');
     const itemInput = document.createElement('input');
@@ -45,11 +45,12 @@ const createHoursInputs = hoursArr.forEach(function(input){
     const saveBtn = document.createElement('button');
 
     time.setAttribute('class', 'hours__time')
-    time.textContent = input.hour;
+    time.textContent = i.hour;
 
     itemInput.type = 'text';
-    itemInput.id = 'input' + input.code;
+    itemInput.id = 'input' + i.code;
     itemInput.setAttribute('class', 'hours__input');
+    itemInput.setAttribute('data-hr', i.code);
 
     inputLabel.setAttribute('for', itemInput.id);
     inputLabel.setAttribute('class', 'hours__input_label');
@@ -62,15 +63,30 @@ const createHoursInputs = hoursArr.forEach(function(input){
     saveBtn.setAttribute('class', 'saveBtn btn');
     saveBtn.textContent = 'Save Item';
 
-    item.id = 'hour' + input.code;
-    item.setAttribute('class', 'hours__item');
-    item.appendChild(time);
-    item.appendChild(inputWrap);
-    item.appendChild(saveBtn);
+    hoursItem.id = 'hour' + i.code;
+    hoursItem.setAttribute('class', 'hours__item');
+    hoursItem.appendChild(time);
+    hoursItem.appendChild(inputWrap);
+    hoursItem.appendChild(saveBtn);
 
-    hoursWrap.appendChild(item);
+    hoursWrap.appendChild(hoursItem);
 });
 
 createHoursInputs;
 
-console.log(dayjs().format('H'));
+// const hoursInputs = document.querySelectorAll('.hours__input');
+// console.log(hoursInputs);
+
+// const setInputColor = hoursInputs.forEach(function(input){
+//     const currentHour = dayjs().format('H');
+
+//     if(input.code === currentHour){
+        
+//     }
+// });
+
+// setInputColor;
+
+// if(dayjs().format('H') === '12'){
+//     console.log('it is noon');
+// };
