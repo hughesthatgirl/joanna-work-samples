@@ -4,10 +4,6 @@
 // Need to check every hour to reset the colors
 // On page load each day, the app should be cleared of data and local storage should be cleared too
 
-// dayjs.extend(window.dayjs_plugin_weekday);
-// dayjs.extend(window.dayjs_plugin_weekYear);
-// dayjs.extend(window.dayjs_plugin_weekOfYear);
-
 const currentDay = document.querySelector('#currentDay');
 currentDay.textContent = dayjs().format("ddd MM-DD-YYYY");
 
@@ -23,7 +19,8 @@ const updateTimeAndColor = setInterval(function(){
 
 updateTimeAndColor;
 
-//Store the time and the code dayJS uses for hours
+//Store the time and the code to represent what dayJS uses for hours
+//Create the elements to show the time, the inputs and save buttons
 const hoursArr = [
     {hour: '9AM', code: '9'},
     {hour: '10AM', code: '10'},
@@ -36,7 +33,6 @@ const hoursArr = [
     {hour: '5PM', code: '17'}
 ];
 
-//Create the elements to show the time, the inputs and save buttons
 const createHoursInputs = hoursArr.forEach(function(i){
     const hoursWrap = document.querySelector('#hours');
     const hoursItem = document.createElement('div');
@@ -62,6 +58,7 @@ const createHoursInputs = hoursArr.forEach(function(i){
     inputWrap.appendChild(inputLabel);
     inputWrap.appendChild(itemInput);
 
+    saveBtn.id = 'btn' + i.code;
     saveBtn.setAttribute('class', 'saveBtn btn');
     saveBtn.textContent = 'Save Item';
 
@@ -77,10 +74,10 @@ const createHoursInputs = hoursArr.forEach(function(i){
 createHoursInputs;
 
 //Get all of the inputs
-const hoursInputs = document.querySelectorAll('.hours__input');
-
 //Compare the data-hr attribute on each input to the current hour
 //Conditionally set the background color
+const hoursInputs = document.querySelectorAll('.hours__input');
+
 const setInputColor = hoursInputs.forEach(function(input){
     const currentHour = parseInt(dayjs().format('H'));
     const dataHr = parseInt(input.getAttribute('data-hr'));
@@ -104,3 +101,18 @@ const setInputColor = hoursInputs.forEach(function(input){
         parentEl.classList.remove('future');
     }
 });
+
+//Function to add item to local storage
+const storeItem = function(el){
+    if (el.value.length < 1) return;
+
+    localStorage.setItem('todo', el.value);
+}
+
+//Function to remove item to local storage
+const removeItem = function(el){
+    localStorage.removeItem('todo');
+}
+
+const saveButtons = document.querySelectorAll('.saveBtn');
+console.log(saveButtons);
