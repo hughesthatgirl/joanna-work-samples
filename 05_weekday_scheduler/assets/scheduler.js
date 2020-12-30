@@ -1,8 +1,4 @@
-//TODO: 
-// Need to display current day, and date (this will get updated on page load by dayJS);
-// Need to store the current hour so that we can compare to the hours in the app and style accordingly
-// Need to check every hour to reset the colors
-// On page load each day, the app should be cleared of data and local storage should be cleared too
+//Work Day Scheduler App
 
 //Helper Functions
 const getDayAsNumber = function(){
@@ -88,10 +84,10 @@ const createHoursInputs = hoursArr.forEach(function(i){
 createHoursInputs;
 
 //Get all of the inputs
-//Compare the data-hr attribute on each input to the current hour
-//Conditionally set the background color
 const hoursInputs = document.querySelectorAll('.hours__input');
 
+//Compare the data-hr attribute on each input to the current hour
+//Conditionally set the background color
 const setInputColor = hoursInputs.forEach(function(input){
     const currentHour = parseInt(dayjs().format('H'));
     const dataHr = parseInt(input.getAttribute('data-hr'));
@@ -117,6 +113,8 @@ const setInputColor = hoursInputs.forEach(function(input){
 });
 
 //Function to add item to local storage
+//Set up click handlers for save buttons
+//Pass in the storeItem function when saved button is clicked
 const storeItem = function(el){
     if (el.value.length < 1) return;
 
@@ -128,7 +126,55 @@ const storeItem = function(el){
     localStorage.setItem('todo' + el.id, JSON.stringify(data));
 }
 
-//Function to expire storage if it's the next day
+document.addEventListener('click', function(event){
+    if (event.target.id === 'btn9'){
+        const input9 = document.querySelector('#input9');
+        storeItem(input9);
+    }
+
+    if (event.target.id === 'btn10'){
+        const input10 = document.querySelector('#input10');
+        storeItem(input10);
+    }
+
+    if (event.target.id === 'btn11'){
+        const input11 = document.querySelector('#input11');
+        storeItem(input11);
+    }
+
+    if (event.target.id === 'btn12'){
+        const input12 = document.querySelector('#input12');
+        storeItem(input12);
+    }
+
+    if (event.target.id === 'btn13'){
+        const input13 = document.querySelector('#input13');
+        storeItem(input13);
+    }
+
+    if (event.target.id === 'btn14'){
+        const input14 = document.querySelector('#input14');
+        storeItem(input14);
+    }
+
+    if (event.target.id === 'btn15'){
+        const input15 = document.querySelector('#input15');
+        storeItem(input15);
+    }
+
+    if (event.target.id === 'btn16'){
+        const input16 = document.querySelector('#input16');
+        storeItem(input16);
+    }
+
+    if (event.target.id === 'btn17'){
+        const input17 = document.querySelector('#input17');
+        storeItem(input17);
+    }
+});
+
+//Functions to check if the data is still good 
+//and if not remove the data from local storage
 const dataExpired = function(d){
     if (!d || !d.todo || !d.daySaved) return false;
 
@@ -138,65 +184,18 @@ const dataExpired = function(d){
     return dayCurrent > d.daySaved;
 }
 
-let storedData;
+const getData = function(el){
+    const storedData = JSON.parse(localStorage.getItem('todo' + el.id));
+    
+    return storedData;
+}
 
-//Set up click handlers for save buttons
-document.addEventListener('click', function(event){
-    if (event.target.id === 'btn9'){
-        const input9 = document.querySelector('#input9');
-        storeItem(input9);
-        storedData = JSON.parse(localStorage.getItem('todoinput9'));
-        if (dataExpired(storedData)){
-            localStorage.removeItem('todoinput9');
-        }
-        console.log(`clicked: ${input9.id}`);
-    }
-
-    if (event.target.id === 'btn10'){
-        const input10 = document.querySelector('#input10');
-        storeItem(input10);
-        console.log(`clicked: ${input10.id}`);
-    }
-
-    if (event.target.id === 'btn11'){
-        const input11 = document.querySelector('#input11');
-        storeItem(input11);
-        console.log(`clicked: ${input11.id}`);
-    }
-
-    if (event.target.id === 'btn12'){
-        const input12 = document.querySelector('#input12');
-        storeItem(input12);
-        console.log(`clicked: ${input12.id}`);
-    }
-
-    if (event.target.id === 'btn13'){
-        const input13 = document.querySelector('#input13');
-        storeItem(input13);
-        console.log(`clicked: ${input13.id}`);
-    }
-
-    if (event.target.id === 'btn14'){
-        const input14 = document.querySelector('#input14');
-        storeItem(input14);
-        console.log(`clicked: ${input14.id}`);
-    }
-
-    if (event.target.id === 'btn15'){
-        const input15 = document.querySelector('#input15');
-        storeItem(input15);
-        console.log(`clicked: ${input15.id}`);
-    }
-
-    if (event.target.id === 'btn16'){
-        const input16 = document.querySelector('#input16');
-        storeItem(input16);
-        console.log(`clicked: ${input16.id}`);
-    }
-
-    if (event.target.id === 'btn17'){
-        const input17 = document.querySelector('#input17');
-        storeItem(input17);
-        console.log(`clicked: ${input17.id}`);
+const clearStoredData = hoursInputs.forEach(function(input){
+    const data = getData(input);
+    if (dataExpired(data)){
+        localStorage.removeItem('todo' + input.id);
+        input.value = '';
     }
 });
+
+clearStoredData;
