@@ -12,7 +12,7 @@ const updateTimeAndColor = setInterval(function(){
     const currentTime = document.querySelector('#currentTime');
 
     currentTime.textContent = "";
-    currentTime.textContent = dayjs().format("h:mm a");
+    currentTime.textContent = dayjs().format("h:mm A");
 
     setInputColor;
 },1000)
@@ -106,7 +106,12 @@ const setInputColor = hoursInputs.forEach(function(input){
 const storeItem = function(el){
     if (el.value.length < 1) return;
 
-    localStorage.setItem('todo' + el.id, el.value);
+    const data = {
+        todo: el.value,
+        timeSaved: dayjs().format("h:mm:ss A")
+    }
+
+    localStorage.setItem('todo' + el.id, JSON.stringify(data));
 }
 
 //Function to remove item to local storage
