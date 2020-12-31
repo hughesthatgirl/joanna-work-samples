@@ -71,6 +71,7 @@ const createHoursInputs = hoursArr.forEach(function(i){
     saveBtn.id = 'btn' + i.code;
     saveBtn.setAttribute('class', 'saveBtn btn');
     saveBtn.textContent = 'Save Item';
+    saveBtn.type = 'button';
 
     hoursItem.id = 'hour' + i.code;
     hoursItem.setAttribute('class', 'hours__item');
