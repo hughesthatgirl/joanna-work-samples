@@ -90,14 +90,14 @@ const hoursInputs = document.querySelectorAll('.hours__input');
 //Compare the data-hr attribute on each input to the current hour
 //Conditionally set the background color
 const setInputColor = hoursInputs.forEach(function(input){
-    const currentHour = parseInt(dayjs().format('H'));
+    const currentHour = getHourAsNumber();
     const dataHr = parseInt(input.getAttribute('data-hr'));
     const parentEl = input.parentElement;
 
     if (dataHr === currentHour){
-        parentEl.classList.add('current');
+        parentEl.classList.add('present');
     } else {
-        parentEl.classList.remove('current');
+        parentEl.classList.remove('present');
     }
 
     if (dataHr < currentHour){
@@ -115,7 +115,7 @@ const setInputColor = hoursInputs.forEach(function(input){
 
 //Function to add item to local storage
 //Set up click handlers for save buttons
-//Pass in the storeItem function when saved button is clicked
+//Pass in the storeItem function when save button is clicked
 const storeItem = function(el){
     if (el.value.length < 1) return;
 
@@ -174,8 +174,11 @@ document.addEventListener('click', function(event){
     }
 });
 
-//Functions to check if the data is still good 
-//and if not remove the data from local storage
+//Functions to check if the data should be removed from storage
+//dayJS returns the days of the week as numbers 0 - 6
+//if the day that the item was added to storage is less than the current day
+//then remove the item from local storage
+//TODO: figure out what to do about saturday/sunday 
 const dataExpired = function(d){
     if (!d || !d.todo || !d.daySaved) return false;
 
