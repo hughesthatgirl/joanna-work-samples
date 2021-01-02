@@ -97,6 +97,12 @@ button:hover {
   border: none;
   background-color: transparent;
   font-size: 16px;
+  color: inherit;
+}
+
+.hours__input_label {
+  font-style: italic;
+  font-size: 16px;
 }
 
 @media only screen and (min-width: 800px){
@@ -121,23 +127,23 @@ button:hover {
 
 /*** UTILITIES TO STYLE INPUTS ***/
 .past {
-  border: 1px solid #d3d3d3;
-  color: transparent;
+  color: #838b83;
   background: repeating-linear-gradient(
     -45deg,
-    #d3d3d3,
-    #d3d3d3 10px,
+    #e8e8e8,
+    #e8e8e8 10px,
     #fff 10px,
     #fff 20px
   );
 }
 
 .present {
-  border: 1px solid  #ff6961;
+  border: 5px solid  #ff6961;
   color: #000;
 }
 
 .future {
-  border: 1px solid #77dd77;
-  color: #000;
+  border: 1px solid #deff99;
+  background-color: #deff99;
+  color: #838b83;
 }
