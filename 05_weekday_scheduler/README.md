@@ -13,4 +13,4 @@
 Follow this link to [go to the weekday scheduler](https://hughesthatgirl.github.io/joanna-work-samples/05_weekday_scheduler/index.html). 
 
 ## Preview of what the coding quiz should look like
-![Screenshot of the coding quiz](./images/weekday_scheduler.png);
+![Screenshot of the weekday scheduler](./images/workday_scheduler.png);
