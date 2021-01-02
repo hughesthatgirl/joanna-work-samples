@@ -30,14 +30,14 @@ const showCurrentTime = function(){
 }
 
 //Counts the seconds and shows the updated time and changes the input color
-const updateTimeAndColor = setInterval(function(){
+const updateTimeDayColor = setInterval(function(){
     showCurrentDay()
     showCurrentTime();
     setInputColor();
 
 },1000)
 
-updateTimeAndColor;
+updateTimeDayColor;
 
 //Store the time and the code to represent what dayJS uses for hours
 //Create the elements to show the time, the inputs and save buttons
@@ -221,4 +221,8 @@ const clearStoredData = function(){
     });
 }
 
-clearStoredData();
+const checkStorage = setInterval(function(){
+    clearStoredData();
+},1000)
+
+checkStorage;
