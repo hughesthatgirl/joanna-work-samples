@@ -101,7 +101,7 @@ const hoursInputs = document.querySelectorAll('.hours__input');
 //Conditionally set the background color
 const setInputColor = function(){
     const currentHour = getHourAsNumber();
-    
+
     for (let i = 0; i < hoursInputs.length; i++){
         const dataHr = parseInt(hoursInputs[i].getAttribute('data-hr'));
         const parentEl = hoursInputs[i].parentElement;
@@ -207,12 +207,14 @@ const getData = function(el){
     return storedData;
 }
 
-const clearStoredData = hoursInputs.forEach(function(input){
-    const data = getData(input);
-    if (dataExpired(data)){
-        localStorage.removeItem('todo' + input.id);
-        input.value = '';
-    }
-});
+const clearStoredData = function(){
+    hoursInputs.forEach(function(input){
+        const data = getData(input);
+        if (dataExpired(data)){
+            localStorage.removeItem('todo' + input.id);
+            input.value = '';
+        }
+    });
+}
 
-clearStoredData;
+clearStoredData();
