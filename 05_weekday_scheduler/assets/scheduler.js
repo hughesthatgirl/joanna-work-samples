@@ -12,19 +12,29 @@ const getHourAsNumber = function(){
 //Get the day/date and display it
 const showCurrentDay = function(){
     const currentDay = document.querySelector('#currentDay');
+
+    currentDay.textContent = "";
     currentDay.textContent = dayjs().format("ddd MM-DD-YYYY");
+
+    return currentDay;
 }
 
-showCurrentDay();
-
-//Counts the seconds and shows the updated time and changes the input color
-const updateTimeAndColor = setInterval(function(){
+//Get the time and display it
+const showCurrentTime = function(){
     const currentTime = document.querySelector('#currentTime');
 
     currentTime.textContent = "";
     currentTime.textContent = dayjs().format("h:mm A");
 
+    return currentTime;
+}
+
+//Counts the seconds and shows the updated time and changes the input color
+const updateTimeAndColor = setInterval(function(){
+    showCurrentDay()
+    showCurrentTime();
     setInputColor;
+
 },1000)
 
 updateTimeAndColor;
