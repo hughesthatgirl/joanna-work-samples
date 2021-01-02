@@ -29,16 +29,6 @@ const showCurrentTime = function(){
     return currentTime;
 }
 
-//Counts the seconds and shows the updated time and changes the input color
-const updateTimeDayColor = setInterval(function(){
-    showCurrentDay()
-    showCurrentTime();
-    setInputColor();
-
-},1000)
-
-updateTimeDayColor;
-
 //Store the time and the code to represent what dayJS uses for hours
 //Create the elements to show the time, the inputs and save buttons
 const hoursArr = [
@@ -53,46 +43,60 @@ const hoursArr = [
     {hour: '5PM', code: '17'}
 ];
 
-const createHoursInputs = hoursArr.forEach(function(i){
-    const hoursWrap = document.querySelector('#hours');
-    const hoursItem = document.createElement('div');
-    const time = document.createElement('div');
-    const inputWrap = document.createElement('div');
-    const itemInput = document.createElement('input');
-    const inputLabel = document.createElement('label');
-    const saveBtn = document.createElement('button');
+const createHoursInputs = function(){
+    hoursArr.forEach(function(i){
+        const hoursWrap = document.querySelector('#hours');
+        const hoursItem = document.createElement('div');
+        const time = document.createElement('div');
+        const inputWrap = document.createElement('div');
+        const itemInput = document.createElement('input');
+        const inputLabel = document.createElement('label');
+        const saveBtn = document.createElement('button');
+    
+        time.setAttribute('class', 'hours__time')
+        time.textContent = i.hour;
+    
+        itemInput.type = 'text';
+        itemInput.id = 'input' + i.code;
+        itemInput.setAttribute('class', 'hours__input');
+        itemInput.setAttribute('data-hr', i.code);
+    
+        inputLabel.setAttribute('for', itemInput.id);
+        inputLabel.setAttribute('class', 'hours__input_label');
+        inputLabel.textContent = 'Enter text here';
+    
+        inputWrap.setAttribute('class', 'hours__input_wrap');
+        inputWrap.appendChild(inputLabel);
+        inputWrap.appendChild(itemInput);
+    
+        saveBtn.id = 'btn' + i.code;
+        saveBtn.setAttribute('class', 'saveBtn btn');
+        saveBtn.textContent = 'Save Item';
+        saveBtn.type = 'button';
+    
+        hoursItem.id = 'hour' + i.code;
+        hoursItem.setAttribute('class', 'hours__item');
+        hoursItem.appendChild(time);
+        hoursItem.appendChild(inputWrap);
+        hoursItem.appendChild(saveBtn);
+    
+        hoursWrap.appendChild(hoursItem);
+    });
+}
 
-    time.setAttribute('class', 'hours__time')
-    time.textContent = i.hour;
+showCurrentDay()
+showCurrentTime();
+createHoursInputs();
 
-    itemInput.type = 'text';
-    itemInput.id = 'input' + i.code;
-    itemInput.setAttribute('class', 'hours__input');
-    itemInput.setAttribute('data-hr', i.code);
+//Counts the seconds and shows the updated time and changes the input color
+const updateTimeDayColor = setInterval(function(){
+    showCurrentDay()
+    showCurrentTime();
+    setInputColor();
 
-    inputLabel.setAttribute('for', itemInput.id);
-    inputLabel.setAttribute('class', 'hours__input_label');
-    inputLabel.textContent = 'Enter text here';
+},1000)
 
-    inputWrap.setAttribute('class', 'hours__input_wrap');
-    inputWrap.appendChild(inputLabel);
-    inputWrap.appendChild(itemInput);
-
-    saveBtn.id = 'btn' + i.code;
-    saveBtn.setAttribute('class', 'saveBtn btn');
-    saveBtn.textContent = 'Save Item';
-    saveBtn.type = 'button';
-
-    hoursItem.id = 'hour' + i.code;
-    hoursItem.setAttribute('class', 'hours__item');
-    hoursItem.appendChild(time);
-    hoursItem.appendChild(inputWrap);
-    hoursItem.appendChild(saveBtn);
-
-    hoursWrap.appendChild(hoursItem);
-});
-
-createHoursInputs;
+updateTimeDayColor;
 
 //Get all of the inputs
 const hoursInputs = document.querySelectorAll('.hours__input');
