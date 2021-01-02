@@ -140,50 +140,65 @@ const storeItem = function(el){
     localStorage.setItem('todo' + el.id, JSON.stringify(data));
 }
 
+const displayTodo = function(el){
+    const todoObj = JSON.parse(localStorage.getItem('todo' + el.id));
+
+    el.value = todoObj.todo;
+}
+
 document.addEventListener('click', function(event){
     if (event.target.id === 'btn9'){
         const input9 = document.querySelector('#input9');
         storeItem(input9);
+        displayTodo(input9);
     }
 
     if (event.target.id === 'btn10'){
         const input10 = document.querySelector('#input10');
         storeItem(input10);
+        displayTodo(input10);
     }
 
     if (event.target.id === 'btn11'){
         const input11 = document.querySelector('#input11');
         storeItem(input11);
+        displayTodo(input11);
     }
 
     if (event.target.id === 'btn12'){
         const input12 = document.querySelector('#input12');
         storeItem(input12);
+        displayTodo(input12);
     }
 
     if (event.target.id === 'btn13'){
         const input13 = document.querySelector('#input13');
         storeItem(input13);
+        displayTodo(input13);
     }
 
     if (event.target.id === 'btn14'){
         const input14 = document.querySelector('#input14');
         storeItem(input14);
+        displayTodo(input14);
     }
 
     if (event.target.id === 'btn15'){
         const input15 = document.querySelector('#input15');
         storeItem(input15);
+        displayTodo(input15);
     }
 
     if (event.target.id === 'btn16'){
         const input16 = document.querySelector('#input16');
         storeItem(input16);
+        displayTodo(input16);
     }
 
     if (event.target.id === 'btn17'){
         const input17 = document.querySelector('#input17');
         storeItem(input17);
+        displayTodo(input17);
     }
 });
 
