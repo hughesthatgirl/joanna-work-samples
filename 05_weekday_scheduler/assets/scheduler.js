@@ -33,7 +33,7 @@ const showCurrentTime = function(){
 const updateTimeAndColor = setInterval(function(){
     showCurrentDay()
     showCurrentTime();
-    setInputColor;
+    setInputColor();
 
 },1000)
 
@@ -99,29 +99,32 @@ const hoursInputs = document.querySelectorAll('.hours__input');
 
 //Compare the data-hr attribute on each input to the current hour
 //Conditionally set the background color
-const setInputColor = hoursInputs.forEach(function(input){
+const setInputColor = function(){
     const currentHour = getHourAsNumber();
-    const dataHr = parseInt(input.getAttribute('data-hr'));
-    const parentEl = input.parentElement;
+    
+    for (let i = 0; i < hoursInputs.length; i++){
+        const dataHr = parseInt(hoursInputs[i].getAttribute('data-hr'));
+        const parentEl = hoursInputs[i].parentElement;
 
-    if (dataHr === currentHour){
-        parentEl.classList.add('present');
-    } else {
-        parentEl.classList.remove('present');
+        if (dataHr === currentHour){
+            parentEl.classList.add('present');
+        } else {
+            parentEl.classList.remove('present');
+        }
+    
+        if (dataHr < currentHour){
+            parentEl.classList.add('past');
+        } else {
+            parentEl.classList.remove('past');
+        }
+    
+        if(dataHr > currentHour){
+            parentEl.classList.add('future');
+        } else {
+            parentEl.classList.remove('future');
+        }
     }
-
-    if (dataHr < currentHour){
-        parentEl.classList.add('past');
-    } else {
-        parentEl.classList.remove('past');
-    }
-
-    if(dataHr > currentHour){
-        parentEl.classList.add('future');
-    } else {
-        parentEl.classList.remove('future');
-    }
-});
+}
 
 //Function to add item to local storage
 //Set up click handlers for save buttons
