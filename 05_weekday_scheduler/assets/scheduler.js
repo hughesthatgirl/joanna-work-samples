@@ -1,8 +1,8 @@
 //Work Day Scheduler App
 
 //Helper Functions
-const getDayAsNumber = function(){
-    return parseInt(dayjs().format('d'));
+const getDate = function(){
+    return dayjs().format("ddd MM-DD-YYYY");
 }
 
 const getHourAsNumber = function(){
@@ -14,7 +14,7 @@ const showCurrentDay = function(){
     const currentDay = document.querySelector('#currentDay');
 
     currentDay.textContent = "";
-    currentDay.textContent = dayjs().format("ddd MM-DD-YYYY");
+    currentDay.textContent = getDate();
 
     return currentDay;
 }
@@ -134,7 +134,7 @@ const storeItem = function(el){
 
     const data = {
         todo: el.value,
-        daySaved: parseInt(dayjs().format('d'))
+        dateSaved: getDate()
     }
 
     localStorage.setItem('todo' + el.id, JSON.stringify(data));
@@ -188,17 +188,21 @@ document.addEventListener('click', function(event){
 });
 
 //Functions to check if the data should be removed from storage
-//dayJS returns the days of the week as numbers 0 - 6
-//if the day that the item was added to storage is less than the current day
-//then remove the item from local storage
-//TODO: figure out what to do about saturday/sunday 
+//if the day that the item was added to storage is different from the current day
+//then clear the stored data 
 const dataExpired = function(d){
-    if (!d || !d.todo || !d.daySaved) return false;
+    if (!d || !d.todo || !d.dateSaved) return false;
 
-    const dayCurrent = getDayAsNumber();
+    const dateCurrent = getDate();
 
-    //should return true or false
-    return dayCurrent > d.daySaved;
+    //if the current date is the same as the date the item was saved
+    //then it is not expired (return false); if it's a different date, 
+    // then it is expired (return true)
+    if (dateCurrent == d.dateSaved){
+        return false;
+    } else {
+        return true;
+    }
 }
 
 const getData = function(el){
