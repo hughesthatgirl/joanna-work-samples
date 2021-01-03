@@ -92,7 +92,7 @@ button:hover {
 .hours__input {
   height: 50px;
   width: 100%;
-  padding: 0;
+  padding: 0 20px;
   margin: 5px 0 0 0;
   border: none;
   background-color: transparent;
@@ -105,6 +105,21 @@ button:hover {
   font-size: 16px;
 }
 
+.saveBtn {
+  border: none;
+  border-radius: 0;
+  background-color: #06AED5;
+  color: white;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.todo__text {
+  text-align: left;
+  font-weight: bold;
+  padding-left: 20px;
+}
+
 @media only screen and (min-width: 800px){
   .hours__item {
     grid-template-columns: 50px 1fr 100px;
@@ -114,15 +129,10 @@ button:hover {
     align-self: center;
     text-align: center;
   }
-}
 
-.saveBtn {
-  border: none;
-  border-radius: 0;
-  background-color: #06AED5;
-  color: white;
-  padding: 10px;
-  font-size: 18px;
+  .saveBtn {
+    align-self: center;
+  }
 }
 
 /*** UTILITIES TO STYLE INPUTS ***/
