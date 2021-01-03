@@ -51,6 +51,7 @@ const createHoursInputs = function(){
         const inputWrap = document.createElement('div');
         const itemInput = document.createElement('input');
         const inputLabel = document.createElement('label');
+        const todoText = document.createElement('p');
         const saveBtn = document.createElement('button');
     
         time.setAttribute('class', 'hours__time')
@@ -64,10 +65,14 @@ const createHoursInputs = function(){
         inputLabel.setAttribute('for', itemInput.id);
         inputLabel.setAttribute('class', 'hours__input_label');
         inputLabel.textContent = 'Enter text here';
+
+        todoText.id = 'todo' + i.code;
+        todoText.setAttribute('class', 'todo__text');
     
         inputWrap.setAttribute('class', 'hours__input_wrap');
         inputWrap.appendChild(inputLabel);
         inputWrap.appendChild(itemInput);
+        inputWrap.appendChild(todoText);
     
         saveBtn.id = 'btn' + i.code;
         saveBtn.setAttribute('class', 'saveBtn btn');
@@ -144,65 +149,75 @@ const storeItem = function(el){
     localStorage.setItem('todo' + el.id, JSON.stringify(data));
 }
 
-const displayTodo = function(el){
+const displayTodo = function(el, text){
     const todoObj = JSON.parse(localStorage.getItem('todo' + el.id));
 
-    el.value = todoObj.todo;
+    text.textContent = todoObj.todo;
+    el.value = '';
 }
 
 document.addEventListener('click', function(event){
     if (event.target.id === 'btn9'){
         const input9 = document.querySelector('#input9');
+        const todo9 = document.querySelector('#todo9');
         storeItem(input9);
-        displayTodo(input9);
+        displayTodo(input9, todo9);
     }
 
     if (event.target.id === 'btn10'){
         const input10 = document.querySelector('#input10');
+        const todo10 = document.querySelector('#todo10');
         storeItem(input10);
-        displayTodo(input10);
+        displayTodo(input10, todo10);
     }
 
     if (event.target.id === 'btn11'){
         const input11 = document.querySelector('#input11');
+        const todo11 = document.querySelector('#todo11');
         storeItem(input11);
-        displayTodo(input11);
+        displayTodo(input11, todo11);
     }
 
     if (event.target.id === 'btn12'){
         const input12 = document.querySelector('#input12');
+        const todo12 = document.querySelector('#todo12');
         storeItem(input12);
-        displayTodo(input12);
+        displayTodo(input12, todo12);
     }
 
     if (event.target.id === 'btn13'){
         const input13 = document.querySelector('#input13');
+        const todo13 = document.querySelector('#todo13');
         storeItem(input13);
-        displayTodo(input13);
+        displayTodo(input13, todo13);
     }
 
     if (event.target.id === 'btn14'){
         const input14 = document.querySelector('#input14');
+        const todo14 = document.querySelector('#todo14');
         storeItem(input14);
-        displayTodo(input14);
+        displayTodo(input14, todo14);
     }
 
     if (event.target.id === 'btn15'){
         const input15 = document.querySelector('#input15');
+        const todo15 = document.querySelector('#todo15');
         storeItem(input15);
-        displayTodo(input15);
+        displayTodo(input15, todo15);
     }
 
     if (event.target.id === 'btn16'){
         const input16 = document.querySelector('#input16');
+        const todo16 = document.querySelector('#todo16');
         storeItem(input16);
-        displayTodo(input16);
+        displayTodo(input16, todo16);
     }
 
     if (event.target.id === 'btn17'){
         const input17 = document.querySelector('#input17');
+        const todo17 = document.querySelector('#todo17');
         storeItem(input17);
-        displayTodo(input17);
+        displayTodo(input17, todo17);
     }
 });
 
