@@ -248,9 +248,11 @@ const getData = function(el){
 const clearStoredData = function(){
     hoursInputs.forEach(function(input){
         const data = getData(input);
+        const todoText = input.nextElementSibling;
         if (dataExpired(data)){
             localStorage.removeItem('todo' + input.id);
             input.value = '';
+            todoText.textContent = '';
         }
     });
 }
