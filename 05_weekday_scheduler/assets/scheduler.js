@@ -135,12 +135,7 @@ const setInputColor = function(){
     }
 }
 
-const getData = function(el){
-    const storedData = JSON.parse(localStorage.getItem('todo' + el.id));
-    
-    return storedData;
-}
-
+//Functions to store, get and display items to/from local storage
 const storeItem = function(el){
     if (el.value.length < 1) return;
 
@@ -152,12 +147,35 @@ const storeItem = function(el){
     localStorage.setItem('todo' + el.id, JSON.stringify(data));
 }
 
+const getData = function(el){
+    const storedData = JSON.parse(localStorage.getItem('todo' + el.id));
+    
+    return storedData;
+}
+
 const displayTodo = function(el, text){
     const todoObj = getData(el);
 
     text.textContent = 'To Do:' + " " + todoObj.todo;
     el.value = '';
 }
+
+const displayTodoOnLoad = function(){
+    hoursInputs.forEach(function(input){
+        const todoText = input.nextElementSibling;
+        
+        const savedData = getData(input);
+
+        if(savedData == null){
+            return;
+        } else {
+            displayTodo(input, todoText);
+        }
+        
+    })
+}
+
+displayTodoOnLoad();
 
 document.addEventListener('click', function(event){
     if (event.target.id === 'btn9'){
@@ -259,20 +277,3 @@ const checkStorage = setInterval(function(){
 },1000)
 
 checkStorage;
-
-const displayTodoOnLoad = function(){
-    hoursInputs.forEach(function(input){
-        const todoText = input.nextElementSibling;
-        
-        const savedData = getData(input);
-
-        if(savedData == null){
-            return;
-        } else {
-            displayTodo(input, todoText);
-        }
-        
-    })
-}
-
-displayTodoOnLoad();
