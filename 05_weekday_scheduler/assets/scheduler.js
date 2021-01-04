@@ -153,7 +153,7 @@ const storeItem = function(el){
 }
 
 const displayTodo = function(el, text){
-    const todoObj = JSON.parse(localStorage.getItem('todo' + el.id));
+    const todoObj = getData(el);
 
     text.textContent = 'To Do:' + " " + todoObj.todo;
     el.value = '';
