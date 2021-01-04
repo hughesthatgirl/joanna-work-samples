@@ -270,6 +270,54 @@ document.addEventListener('click', function(event){
         const todo9 = document.querySelector('#todo9');
         removeTodo(input9, todo9);
     }
+
+    if (event.target.id === 'delete10'){
+        const input10 = document.querySelector('#input10');
+        const todo10 = document.querySelector('#todo10');
+        removeTodo(input10, todo10);
+    }
+
+    if (event.target.id === 'delete11'){
+        const input11 = document.querySelector('#input11');
+        const todo11 = document.querySelector('#todo11');
+        removeTodo(input11, todo11);
+    }
+
+    if (event.target.id === 'delete12'){
+        const input12 = document.querySelector('#input12');
+        const todo12 = document.querySelector('#todo12');
+        removeTodo(input12, todo12);
+    }
+
+    if (event.target.id === 'delete13'){
+        const input13 = document.querySelector('#input13');
+        const todo13 = document.querySelector('#todo13');
+        removeTodo(input13, todo13);
+    }
+
+    if (event.target.id === 'delete14'){
+        const input14 = document.querySelector('#input14');
+        const todo14 = document.querySelector('#todo14');
+        removeTodo(input14, todo14);
+    }
+
+    if (event.target.id === 'delete15'){
+        const input15 = document.querySelector('#input15');
+        const todo15 = document.querySelector('#todo15');
+        removeTodo(input15, todo15);
+    }
+
+    if (event.target.id === 'delete16'){
+        const input16 = document.querySelector('#input16');
+        const todo16 = document.querySelector('#todo16');
+        removeTodo(input16, todo16);
+    }
+
+    if (event.target.id === 'delete17'){
+        const input17 = document.querySelector('#input17');
+        const todo17 = document.querySelector('#todo17');
+        removeTodo(input17, todo17);
+    }
 });
 
 //Functions to check if the data should be removed from storage
