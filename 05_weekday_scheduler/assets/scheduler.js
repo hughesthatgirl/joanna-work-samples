@@ -260,3 +260,20 @@ const checkStorage = setInterval(function(){
 },1000)
 
 checkStorage;
+
+const displayTodoOnLoad = function(){
+    hoursInputs.forEach(function(input){
+        const todoText = input.nextElementSibling;
+        
+        const savedData = getData(input);
+
+        if(savedData == null){
+            return;
+        } else {
+            displayTodo(input, todoText);
+        }
+        
+    })
+}
+
+displayTodoOnLoad();
