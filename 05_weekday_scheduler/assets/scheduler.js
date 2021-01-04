@@ -135,9 +135,12 @@ const setInputColor = function(){
     }
 }
 
-//Function to add item to local storage
-//Set up click handlers for save buttons
-//Pass in the storeItem function when save button is clicked
+const getData = function(el){
+    const storedData = JSON.parse(localStorage.getItem('todo' + el.id));
+    
+    return storedData;
+}
+
 const storeItem = function(el){
     if (el.value.length < 1) return;
 
@@ -237,12 +240,6 @@ const dataExpired = function(d){
     } else {
         return true;
     }
-}
-
-const getData = function(el){
-    const storedData = JSON.parse(localStorage.getItem('todo' + el.id));
-    
-    return storedData;
 }
 
 const clearStoredData = function(){
