@@ -52,6 +52,8 @@ const createHoursInputs = function(){
         const itemInput = document.createElement('input');
         const inputLabel = document.createElement('label');
         const todoText = document.createElement('p');
+        const btnWrap = document.createElement('div');
+        const deleteBtn = document.createElement('button');
         const saveBtn = document.createElement('button');
     
         time.setAttribute('class', 'hours__time')
@@ -78,12 +80,21 @@ const createHoursInputs = function(){
         saveBtn.setAttribute('class', 'saveBtn btn');
         saveBtn.textContent = 'Save Item';
         saveBtn.type = 'button';
+
+        deleteBtn.id = 'delete' + i.code;
+        deleteBtn.setAttribute('class', 'deleteBtn btn');
+        deleteBtn.textContent = 'Delete Item';
+        deleteBtn.type = 'button';
+
+        btnWrap.setAttribute('class', 'btn__wrap');
+        btnWrap.appendChild(saveBtn);
+        btnWrap.appendChild(deleteBtn);
     
         hoursItem.id = 'hour' + i.code;
         hoursItem.setAttribute('class', 'hours__item');
         hoursItem.appendChild(time);
         hoursItem.appendChild(inputWrap);
-        hoursItem.appendChild(saveBtn);
+        hoursItem.appendChild(btnWrap);
     
         hoursWrap.appendChild(hoursItem);
     });
@@ -160,6 +171,17 @@ const displayTodo = function(el, text){
     el.value = '';
 }
 
+const removeTodo = function(el, text){
+    const savedTodo = getData(el);
+
+    if(savedTodo == null){
+        return;
+    } else {
+        localStorage.removeItem('todo' + el.id);
+        text.textContent = '';
+    }
+}
+
 const displayTodoOnLoad = function(){
     hoursInputs.forEach(function(input){
         const todoText = input.nextElementSibling;
@@ -178,6 +200,7 @@ const displayTodoOnLoad = function(){
 displayTodoOnLoad();
 
 document.addEventListener('click', function(event){
+    //Save Item Buttons
     if (event.target.id === 'btn9'){
         const input9 = document.querySelector('#input9');
         const todo9 = document.querySelector('#todo9');
@@ -239,6 +262,13 @@ document.addEventListener('click', function(event){
         const todo17 = document.querySelector('#todo17');
         storeItem(input17);
         displayTodo(input17, todo17);
+    }
+
+    //Delete Item Buttons
+    if (event.target.id === 'delete9'){
+        const input9 = document.querySelector('#input9');
+        const todo9 = document.querySelector('#todo9');
+        removeTodo(input9, todo9);
     }
 });
 

@@ -8,6 +8,12 @@ body {
 }
 
 button {
+  border: none;
+  border-radius: 0;
+  background-color: #06AED5;
+  color: white;
+  padding: 10px;
+  font-size: 18px;
   cursor: pointer;
   transition: all 0.3s;
 }
@@ -105,13 +111,16 @@ button:hover {
   font-size: 16px;
 }
 
-.saveBtn {
-  border: none;
-  border-radius: 0;
-  background-color: #06AED5;
-  color: white;
-  padding: 10px;
-  font-size: 18px;
+.btn__wrap {
+  display: grid;
+  grid-template-rows: auto;
+  align-items: center;
+  grid-gap: 5px;
+}
+
+.deleteBtn {
+  background-color: #f5df4d;
+  color: black;
 }
 
 .todo__text {
@@ -127,10 +136,6 @@ button:hover {
   .hours__time {
     align-self: center;
     text-align: center;
-  }
-
-  .saveBtn {
-    align-self: center;
   }
 }
 
