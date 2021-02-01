@@ -6,58 +6,111 @@ const fs = require('fs');
 const questions = [
     {
         type: 'input',
-        name: 'first_name',
-        message: 'What is your first name?'
+        name: 'project_title',
+        message: 'What is the title of your project?'
     },
     {
         type: 'input',
-        name: 'location',
-        message: 'Where do you live?'
+        name: 'project_description',
+        message: 'Description?'
     },
     {
         type: 'input',
-        name: 'job',
-        message: 'What do you do for a living?'
+        name: 'project_install',
+        message: 'List Installation Instructions:'
     },
     {
         type: 'input',
-        name: 'food',
-        message: 'What is your favorite food?'
+        name: 'project_usage',
+        message: 'Provide usage information:'
+    },
+    {
+        type: 'input',
+        name: 'project_contribution',
+        message: 'How can someone contribute?'
+    },
+    {
+        type: 'input',
+        name: 'project_tests',
+        message: 'Testing Guidelines:'
+    },
+    {
+        type: 'list',
+        name: 'badge',
+        message: 'Choose a license for this project:',
+        choices: ['MIT', 'ISC', 'Zlib']
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'Enter your Email Address:'
+    },
+    {
+        type: 'input',
+        name: 'github_username',
+        message: 'Enter your GitHub Username:'
     }
 ]
 
 inquirer.prompt(questions).then((data) => {
-    const filename = 'index.html';
+    const filename = 'README.md';
 
-    const firstName = data.first_name;
-    const location = data.location;
-    const job = data.job;
-    const food = data.food;
+    const title = data.project_title;
+    const description = data.project_description;
+    const installation = data.project_install;
+    const usage = data.project_usage;
+    const contribute = data.project_contribution;
+    const tests = data.project_tests;
+    const badge = data.badge;
+    const email = data.email;
+    const github = data.github_username;
+    
+    // let licensing;
 
-    const styles = `body{max-width: 800px; margin: 0 auto; background-color: #cdcdcd;}
-                    main{font-family: sans-serif;}
-                    h1{font-size: 42px; font-weight: bold;}
-                    p{font-weight: bold;}
-                    span {font-weight: normal;}
-    `
 
-    const content = `<main>
-        <h1>About: <span>${firstName}</span></h1>
-        <p>Lives in: <span>${location}</span></p>
-        <p>Occupation: <span>${job}</span></p>
-        <p>Favorite Food: <span>${food}</span></p>
-    </main>`
+    const body = `
+        # ${title}
 
-    const app = `<html>
-                    <head>
-                        <style>
-                            ${styles}
-                        </style>
-                    </head>
-                    <body>${content}</body>
-                </html>`
+        [![License: ${badge}](https://img.shields.io/badge/License-${badge}-blue.svg)](https://opensource.org/licenses/${badge})
 
-    fs.writeFile(filename, app, (err) =>
-      err ? console.log(err) : console.log('Success!')
+        1. [Description](#description)
+        2. [Installation](#installation)
+        3. [Usage](#usage)
+        4. [Contribute](#contribute)
+        5. [Testing](#testing)
+        6. [Questions](#questions)
+        7. [Licensing](#licensing)
+
+        ## Description
+
+        ${description}
+
+        ## Installation
+
+        ${installation}
+
+        ## Usage
+
+        ${usage}
+
+        ## Contribute
+
+        ${contribute}
+
+        ## Testing
+
+        ${tests}
+
+        ## Questions?
+
+        * ${email}
+        * [Github Profile](https://github.com/${github}). 
+
+        ## Licensing
+
+    `;
+
+    fs.writeFile(filename, body, (err) =>
+      err ? console.log(err) : console.log('README Generated!')
     );
 });
