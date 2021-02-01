@@ -1,0 +1,14 @@
+{
+  "name": "07_readme_generator",
+  "version": "1.0.0",
+  "description": "Generate a README file via the command line",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^7.3.3"
+  }
+}
