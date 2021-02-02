@@ -65,46 +65,29 @@ const readMeContent = function(answer){
     
     // let licensing;
 
-    return `# ${title}</br>
-
-    [![License: ${badge}](https://img.shields.io/badge/License-${badge}-blue.svg)](https://opensource.org/licenses/${badge})</br>
-
+    return `# ${title}
+    [![License: ${badge}](https://img.shields.io/badge/License-${badge}-blue.svg)](https://opensource.org/licenses/${badge})
     1. [Description](#description)
     2. [Installation](#installation)
     3. [Usage](#usage)
     4. [Contribute](#contribute)
     5. [Testing](#testing)
     6. [Questions](#questions)
-    7. [Licensing](#licensing)</br>
-
-    ## Description</br>
-
-    ${description}</br>
-
-    ## Installation</br>
-
-    ${installation}</br>
-
-    ## Usage</br>
-
-    ${usage}</br>
-
-    ## Contribute</br>
-
-    ${contribute}</br>
-
-    ## Testing</br>
-
-    ${tests}</br>
-
-    ## Questions?</br>
-
+    7. [Licensing](#licensing)
+    ## Description
+    ${description}
+    ## Installation
+    ${installation}
+    ## Usage
+    ${usage}
+    ## Contribute
+    ${contribute}
+    ## Testing
+    ${tests}
+    ## Questions?
     * ${email}
-    * [Github Profile](https://github.com/${github}).</br>
-
-    ## Licensing</br>
-
-`
+    * [Github Profile](https://github.com/${github}).
+    ## Licensing`
 }
 
 inquirer.prompt(questions).then((data) => {
