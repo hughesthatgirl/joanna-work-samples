@@ -52,65 +52,65 @@ const questions = [
     }
 ]
 
-inquirer.prompt(questions).then((data) => {
-    const filename = 'README.md';
-
-    const title = data.project_title;
-    const description = data.project_description;
-    const installation = data.project_install;
-    const usage = data.project_usage;
-    const contribute = data.project_contribution;
-    const tests = data.project_tests;
-    const badge = data.badge;
-    const email = data.email;
-    const github = data.github_username;
+const readMeContent = function(answer){
+    const title = answer.project_title;
+    const description = answer.project_description;
+    const installation = answer.project_install;
+    const usage = answer.project_usage;
+    const contribute = answer.project_contribution;
+    const tests = answer.project_tests;
+    const badge = answer.badge;
+    const email = answer.email;
+    const github = answer.github_username;
     
     // let licensing;
 
+    return `# ${title}</br>
 
-    const body = `
-        # ${title}</br>
+    [![License: ${badge}](https://img.shields.io/badge/License-${badge}-blue.svg)](https://opensource.org/licenses/${badge})</br>
 
-        [![License: ${badge}](https://img.shields.io/badge/License-${badge}-blue.svg)](https://opensource.org/licenses/${badge})</br>
+    1. [Description](#description)
+    2. [Installation](#installation)
+    3. [Usage](#usage)
+    4. [Contribute](#contribute)
+    5. [Testing](#testing)
+    6. [Questions](#questions)
+    7. [Licensing](#licensing)</br>
 
-        1. [Description](#description)
-        2. [Installation](#installation)
-        3. [Usage](#usage)
-        4. [Contribute](#contribute)
-        5. [Testing](#testing)
-        6. [Questions](#questions)
-        7. [Licensing](#licensing)</br>
+    ## Description</br>
 
-        ## Description</br>
+    ${description}</br>
 
-        ${description}</br>
+    ## Installation</br>
 
-        ## Installation</br>
+    ${installation}</br>
 
-        ${installation}</br>
+    ## Usage</br>
 
-        ## Usage</br>
+    ${usage}</br>
 
-        ${usage}</br>
+    ## Contribute</br>
 
-        ## Contribute</br>
+    ${contribute}</br>
 
-        ${contribute}</br>
+    ## Testing</br>
 
-        ## Testing</br>
+    ${tests}</br>
 
-        ${tests}</br>
+    ## Questions?</br>
 
-        ## Questions?</br>
+    * ${email}
+    * [Github Profile](https://github.com/${github}).</br>
 
-        * ${email}
-        * [Github Profile](https://github.com/${github}). /br>
+    ## Licensing</br>
 
-        ## Licensing</br>
+`
+}
 
-    `;
-
-    fs.writeFile(filename, body, (err) =>
+inquirer.prompt(questions).then((data) => {
+    const filename = 'README.md';
+    
+    fs.writeFile(filename, readMeContent(data), (err) =>
       err ? console.log(err) : console.log('README Generated!')
     );
 });
