@@ -9,7 +9,7 @@ const Intern = require('./src/intern.js')
 
 const writeFile = util.promisify(fs.writeFile)
 
-teamArr = []
+let teamArr = [];
 
 //write inquirer prompts to user about each employee
 const promptManager = () =>
@@ -44,7 +44,6 @@ const promptManager = () =>
     .then(function(answer){
         const manager = new Manager(answer.managerName, answer.managerID, answer.managerEmail, answer.managerOfficeNumber)
         teamArr.push(manager)
-        console.log(teamArr)
         switch(answer.memberType){
             case 'Engineer':
                 promptEngineer()
@@ -90,7 +89,6 @@ const promptEngineer = () =>
     .then(function(answer){
         const newEngineer = new Engineer(answer.engineerName, answer.engineerID, answer.engineerEmail, answer.engineerPhone)
         teamArr.push(newEngineer)
-        console.log(teamArr)
         switch(answer.memberType){
             case 'Engineer':
                 promptEngineer()
@@ -135,7 +133,6 @@ const promptEngineer = () =>
     .then(function(answer){
         const newIntern = new Intern(answer.internName, answer.internID, answer.internEmail, answer.internPhone)
         teamArr.push(newIntern)
-        console.log(teamArr)
         switch(answer.memberType){
             case 'Engineer':
                 promptEngineer()
@@ -149,7 +146,6 @@ const promptEngineer = () =>
     })
 
 const endPrompt = () => {
-    console.log(teamArr)
     const generateHTML = () =>
         'team: ' + teamArr.value
 
