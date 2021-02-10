@@ -1,13 +1,9 @@
-//set consts for the required npms
 const inquirer = require('inquirer')
 const fs = require('fs')
-const util = require('util')
 
 const Manager = require('./src/manager.js')
 const Engineer = require('./src/engineer.js')
 const Intern = require('./src/intern.js')
-
-const writeFile = util.promisify(fs.writeFile)
 
 let teamArr = [];
 
@@ -54,7 +50,6 @@ const promptManager = () =>
             case 'Finish building my team':
                 endPrompt()
         }
-       
     })
     
 const promptEngineer = () =>
@@ -101,7 +96,7 @@ const promptEngineer = () =>
         }
     })
 
-    const promptIntern = () =>
+const promptIntern = () =>
     inquirer.prompt([
         {
             type:'input',
@@ -129,32 +124,32 @@ const promptEngineer = () =>
             message:"Which type of team member would you like to add?",
             choices:['Engineer', 'Intern', 'Finish building my team']       
         }
-    ])
-    .then(function(answer){
-        const newIntern = new Intern(answer.internName, answer.internID, answer.internEmail, answer.internPhone)
-        teamArr.push(newIntern)
-        switch(answer.memberType){
-            case 'Engineer':
-                promptEngineer()
-                break
-            case 'Intern':
-                promptIntern()
-                break
-            case 'Finish building my team':
-                endPrompt()
-        }
-    })
+])
+.then(function(answer){
+    const newIntern = new Intern(answer.internName, answer.internID, answer.internEmail, answer.internPhone)
+    teamArr.push(newIntern)
+    switch(answer.memberType){
+        case 'Engineer':
+            promptEngineer()
+            break
+        case 'Intern':
+            promptIntern()
+            break
+        case 'Finish building my team':
+            endPrompt()
+    }
+})
 
-const endPrompt = () => {
-    const generateHTML = () =>
-        'team: ' + teamArr.value
-
-        const write = (answer) => {
-            writeFile('.index.html', generateHTML(answer))
-            .then(() => console.log('Success!'))
-            .catch((err) => console.error(err))
+const endPrompt = function(){
+    let team = function(){
+            teamArr.forEach(function(teammate){
+                return `<h2>${teammate.name}</h2>`;
+            })
         }
-    write()
+
+    fs.writeFile('index.html', team(), (err) =>
+        err ? console.log(err) : console.log('HTML Generated!')
+    );
 }
 
 promptManager()
